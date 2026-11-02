@@ -11,7 +11,8 @@ const PROJECT_ROOT = process.cwd();
 const CONTENT_ROOT = path.join(PROJECT_ROOT, 'src', 'content');
 const DATA_ROOT = path.join(PROJECT_ROOT, 'src', 'data');
 const PUBLIC_ROOT = path.join(PROJECT_ROOT, 'public');
-const DEFAULT_REPO_URL = process.env.REPO_URL || 'https://github.com/BestDingSheng/awesome-agentic-ai-zh.git';
+const MANIFEST_PATH = path.join(DATA_ROOT, 'sync-manifest.json');
+const DEFAULT_REPO_URL = process.env.REPO_URL || 'https://github.com/WenyuChiou/awesome-agentic-ai-zh.git';
 const REPO_REF = process.env.REPO_REF || 'main';
 const REPO_WEB_URL = DEFAULT_REPO_URL.replace(/\.git$/, '');
 const DEFAULT_LANG = 'zh-cn';
@@ -41,6 +42,16 @@ const copyDir = async (from, to) => {
     const dest = path.join(to, entry.name);
     if (entry.isDirectory()) await copyDir(src, dest);
     else await fs.copyFile(src, dest);
+  }
+};
+
+// 不在 git 仓库中时无法比较，按有变化处理
+const hasGeneratedChanges = async () => {
+  try {
+    const { stdout } = await execFileAsync('git', ['status', '--porcelain', '--', 'src/content', 'public/upstream'], { cwd: PROJECT_ROOT });
+    return stdout.trim().length > 0;
+  } catch {
+    return true;
   }
 };
 
@@ -215,7 +226,6 @@ try {
           `sourcePath: ${JSON.stringify(path.posix.join(section.dir, relativePath))}`,
           `sourceUrl: ${JSON.stringify(`${REPO_WEB_URL}/blob/${REPO_REF}/${path.posix.join(section.dir, relativePath)}`)}`,
           `sourceRepo: ${JSON.stringify(REPO_WEB_URL)}`,
-          `syncedAt: ${JSON.stringify(syncedAt)}`,
           `language: ${JSON.stringify(language)}`,
           `languageLabel: ${JSON.stringify(LANG_META[language].label)}`,
           `baseSlug: ${JSON.stringify(baseSlug)}`,
@@ -246,8 +256,14 @@ try {
     counts
   };
 
-  await fs.writeFile(path.join(DATA_ROOT, 'sync-manifest.json'), JSON.stringify(manifest, null, 2));
-  console.log('Sync complete:', manifest);
+  // 上游提交常常只改动网站用不到的文件；生成结果没变时保留旧 manifest，避免产生只改时间戳的提交
+  const contentChanged = await hasGeneratedChanges();
+  if (!contentChanged && existsSync(MANIFEST_PATH)) {
+    console.log(`No content changes from ${repoCommit}; manifest kept as is.`);
+  } else {
+    await fs.writeFile(MANIFEST_PATH, JSON.stringify(manifest, null, 2));
+    console.log('Sync complete:', manifest);
+  }
 } finally {
   await fs.rm(tempDir, { recursive: true, force: true });
 }

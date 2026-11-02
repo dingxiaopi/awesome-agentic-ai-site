@@ -16,11 +16,9 @@
 - 内容集合：`stages`、`tracks`、`branches`、`resources`、`walkthroughs`
 - 首页、Roadmap、Updates、各内容列表页与详情页
 - 语言切换器（简中 / 繁中 / English）
-- 内容同步脚本：默认从你的 fork 拉取 Markdown 与 `resources/` 静态资源
+- 内容同步脚本：直接从上游仓库拉取 Markdown 与 `resources/` 静态资源；内容没有变化时不产生提交
 - Markdown 相对链接重写为站内多语言路由
-- GitHub Actions：
-  - 网站仓库定时同步内容
-  - fork 仓库同步 upstream 的工作流模板
+- GitHub Actions：每 12 小时定时同步上游内容
 - Vercel 部署配置
 
 ## 本地启动
@@ -34,10 +32,10 @@ npm run dev
 
 默认内容源：
 
-- `https://github.com/BestDingSheng/awesome-agentic-ai-zh.git`
+- `https://github.com/WenyuChiou/awesome-agentic-ai-zh.git`
 - 分支：`main`
 
-如果你想临时改成别的仓库，也可以覆盖：
+如果想临时改成别的仓库（比如自己的 fork），可以覆盖：
 
 ```bash
 REPO_URL=https://github.com/<yourname>/awesome-agentic-ai-zh.git npm run sync:content
@@ -55,17 +53,15 @@ REPO_URL=https://github.com/<yourname>/awesome-agentic-ai-zh.git npm run sync:co
 
 ## 工作流说明
 
-### 1. 网站仓库内容同步
 工作流文件：[`.github/workflows/sync-content.yml`](./.github/workflows/sync-content.yml)
 
-建议在 GitHub 仓库 Variables 中设置：
-- `CONTENT_REPO_URL`：你的 fork 地址，推荐固定为 `https://github.com/BestDingSheng/awesome-agentic-ai-zh.git`
+流程：每 12 小时（也可手动触发）拉取上游内容 → 生成站内 Markdown → `astro build` 校验 → 有变化才提交 → push 触发 Vercel 部署。
+
+上游的提交经常只改动网站用不到的文件，这种情况脚本会保留原有的 `src/data/sync-manifest.json`，不产生提交，也不触发部署。
+
+可在 GitHub 仓库 Variables 中覆盖内容源：
+- `CONTENT_REPO_URL`：内容仓库地址，默认 `https://github.com/WenyuChiou/awesome-agentic-ai-zh.git`
 - `CONTENT_REPO_REF`：分支名，默认 `main`
-
-### 2. fork 仓库同步上游
-模板文件：`templates/fork-workflows/upstream-sync.yml`
-
-把它复制到你的 fork 仓库的 `.github/workflows/upstream-sync.yml` 即可。
 
 ## 下一步建议
 

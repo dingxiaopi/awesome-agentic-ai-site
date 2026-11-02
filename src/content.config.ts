@@ -7,7 +7,6 @@ const baseSchema = z.object({
   sourcePath: z.string(),
   sourceUrl: z.string().url(),
   sourceRepo: z.string(),
-  syncedAt: z.string(),
   order: z.number().optional(),
   language: z.enum(['zh-cn', 'zh-tw', 'en']),
   languageLabel: z.string(),
