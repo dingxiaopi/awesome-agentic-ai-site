@@ -2,214 +2,165 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CollectionGrid from '../components/CollectionGrid.astro';
 import RouteTimeline from '../components/RouteTimeline.astro';
-import manifest from '../data/sync-manifest.json';
 import { getHomeData } from '../lib/content';
-import { createSectionLanguageLinks, type SiteLang } from '../lib/i18n';
+import { createSectionLanguageLinks, getCollectionLabel, type SiteLang } from '../lib/i18n';
 
 interface Props {
   lang?: SiteLang;
 }
 
 const { lang = 'zh-cn' } = Astro.props;
-const { featuredStages, trackSteps, branchSteps } = await getHomeData(lang);
+const { stages, tracks, branches, resources, featuredStages, trackSteps, branchSteps } = await getHomeData(lang);
 const labels = {
   'zh-cn': {
-    eyebrow: '多语言教程文档站',
-    title: '系统学习 Agentic AI 的多语言路线图',
-    intro: '基于 awesome-agentic-ai-zh 构建，默认简体中文，支持繁体中文与 English 切换，并按阶段、目标、人群组织学习内容，适合持续阅读与长期进阶。',
-    primaryCta: '从 Stages 开始',
+    eyebrow: 'AI Agent 学习地图',
+    title: '系统学习 Agentic AI',
+    intro: '从基础概念到动手搭建 Agent，按阶段、目标和身份组织好的中文学习路线。不知道从哪开始，就从第一阶段读起。',
+    primaryCta: '从第一阶段开始',
     secondaryCta: '查看路线图',
-    tertiaryCta: '查看更新',
-    quickStartTitle: '从这里开始',
-    quickStartDesc: '如果你是第一次来，建议先按阶段建立基础，再根据目标和人群选择更适合自己的学习路径。',
+    pathsTitle: '三种学习方式',
+    pathsDesc: '先按阶段打基础，再按目标或身份挑选适合自己的路线。',
     stagePath: '按阶段学习',
-    stagePathDesc: '从基础概念到真实落地，逐步建立 Agentic AI 知识体系。',
+    stagePathDesc: '从基础概念到真实落地，一步步建立 Agentic AI 知识体系。',
     trackPath: '按目标学习',
-    trackPathDesc: '围绕真实任务与应用结果，选择更贴近实践的学习路线。',
-    branchPath: '按人群学习',
-    branchPathDesc: '按开发者、研究者、教师、知识工作者等角色选择内容。',
-    featuredKicker: '推荐内容',
-    featuredTitle: '推荐起步内容',
-    featuredDesc: '优先阅读这些阶段内容，能更快建立整体认知与学习节奏。',
-    allStages: '查看全部 Stages',
+    trackPathDesc: '围绕真实任务与应用结果，选择更贴近实践的路线。',
+    branchPath: '按身份学习',
+    branchPathDesc: '开发者、研究者、教师、知识工作者，各有对应内容。',
+    featuredTitle: '推荐起步',
+    featuredDesc: '先读这几篇，快速建立整体认知。',
+    allStages: '全部阶段',
     trackTitle: '目标路线',
-    branchTitle: '人群路线',
-    syncedKicker: '同步信息',
-    syncedTitle: '内容同步状态',
-    syncedDesc: '站点内容由 fork 仓库自动同步生成，可随时查看最新同步记录。',
-    syncedAt: '最近同步',
-    commit: '提交哈希',
-    repo: '内容来源',
-    notSynced: '尚未执行同步',
-    snapshotTitle: '学习概览'
+    branchTitle: '人群路线'
   },
   'zh-tw': {
-    eyebrow: '多語言教學文件站',
-    title: '系統學習 Agentic AI 的多語言路線圖',
-    intro: '基於 awesome-agentic-ai-zh 構建，預設簡體中文，支援繁體中文與 English 切換，並按階段、目標、人群組織學習內容，適合持續閱讀與長期進階。',
-    primaryCta: '從 Stages 開始',
+    eyebrow: 'AI Agent 學習地圖',
+    title: '系統學習 Agentic AI',
+    intro: '從基礎概念到動手搭建 Agent，按階段、目標和身份整理好的中文學習路線。不知道從哪開始，就從第一階段讀起。',
+    primaryCta: '從第一階段開始',
     secondaryCta: '查看路線圖',
-    tertiaryCta: '查看更新',
-    quickStartTitle: '從這裡開始',
-    quickStartDesc: '如果你是第一次來，建議先按階段建立基礎，再依照目標和人群選擇更適合自己的學習路線。',
+    pathsTitle: '三種學習方式',
+    pathsDesc: '先按階段打基礎，再依目標或身份挑選適合自己的路線。',
     stagePath: '按階段學習',
-    stagePathDesc: '從基礎概念到真實落地，逐步建立 Agentic AI 知識體系。',
+    stagePathDesc: '從基礎概念到真實落地，一步步建立 Agentic AI 知識體系。',
     trackPath: '按目標學習',
-    trackPathDesc: '圍繞真實任務與應用結果，選擇更貼近實作的學習路線。',
-    branchPath: '按人群學習',
-    branchPathDesc: '按開發者、研究者、教師、知識工作者等角色選擇內容。',
-    featuredKicker: '推薦內容',
-    featuredTitle: '推薦起步內容',
-    featuredDesc: '優先閱讀這些階段內容，能更快建立整體認知與學習節奏。',
-    allStages: '查看全部 Stages',
+    trackPathDesc: '圍繞真實任務與應用結果，選擇更貼近實作的路線。',
+    branchPath: '按身份學習',
+    branchPathDesc: '開發者、研究者、教師、知識工作者，各有對應內容。',
+    featuredTitle: '推薦起步',
+    featuredDesc: '先讀這幾篇，快速建立整體認知。',
+    allStages: '全部階段',
     trackTitle: '目標路線',
-    branchTitle: '人群路線',
-    syncedKicker: '同步資訊',
-    syncedTitle: '內容同步狀態',
-    syncedDesc: '站點內容由 fork 倉庫自動同步生成，可隨時查看最新同步紀錄。',
-    syncedAt: '最近同步',
-    commit: '提交哈希',
-    repo: '內容來源',
-    notSynced: '尚未執行同步',
-    snapshotTitle: '學習概覽'
+    branchTitle: '族群路線'
   },
   en: {
-    eyebrow: 'Multilingual tutorial docs',
-    title: 'A multilingual roadmap for learning Agentic AI systematically',
-    intro: 'Built from awesome-agentic-ai-zh, this site uses Simplified Chinese by default, supports Traditional Chinese and English, and organizes learning by stage, goal, and audience for long-term study.',
-    primaryCta: 'Start with Stages',
-    secondaryCta: 'View Roadmap',
-    tertiaryCta: 'See Updates',
-    quickStartTitle: 'Start here',
-    quickStartDesc: 'If this is your first visit, begin with stages to build foundations, then choose a path by goal or audience.',
+    eyebrow: 'AI Agent learning map',
+    title: 'Learn Agentic AI, step by step',
+    intro: 'From core concepts to building your own agents, organized by stage, goal, and role. Not sure where to start? Begin with Stage 0.',
+    primaryCta: 'Start with Stage 0',
+    secondaryCta: 'View roadmap',
+    pathsTitle: 'Three ways to learn',
+    pathsDesc: 'Build foundations by stage, then pick a route by goal or role.',
     stagePath: 'Learn by stage',
     stagePathDesc: 'Move from core concepts to real implementation step by step.',
     trackPath: 'Learn by goal',
-    trackPathDesc: 'Choose routes shaped around practical outcomes and real tasks.',
-    branchPath: 'Learn by audience',
-    branchPathDesc: 'Pick content for developers, researchers, teachers, knowledge workers, and more.',
-    featuredKicker: 'Featured',
-    featuredTitle: 'Recommended starting points',
-    featuredDesc: 'These entries are the best way to build a strong mental model and momentum quickly.',
-    allStages: 'View all Stages',
+    trackPathDesc: 'Routes shaped around practical outcomes and real tasks.',
+    branchPath: 'Learn by role',
+    branchPathDesc: 'Content for developers, researchers, teachers, and knowledge workers.',
+    featuredTitle: 'Start here',
+    featuredDesc: 'Read these first to build a solid mental model.',
+    allStages: 'All stages',
     trackTitle: 'Goal-based paths',
-    branchTitle: 'Audience-based paths',
-    syncedKicker: 'Sync info',
-    syncedTitle: 'Content sync status',
-    syncedDesc: 'Site content is generated from your fork automatically, and the latest sync record is always available.',
-    syncedAt: 'Last synced',
-    commit: 'Commit hash',
-    repo: 'Source repo',
-    notSynced: 'Not synced yet',
-    snapshotTitle: 'Learning snapshot'
+    branchTitle: 'Audience-based paths'
   }
 }[lang];
 
 const currentPath = '/';
 const prefix = lang === 'zh-cn' ? '' : `/${lang}`;
-const quickStarts = [
-  {
-    title: labels.stagePath,
-    description: labels.stagePathDesc,
-    href: `${prefix}/stages/`,
-    meta: 'Stages'
-  },
-  {
-    title: labels.trackPath,
-    description: labels.trackPathDesc,
-    href: `${prefix}/tracks/`,
-    meta: 'Tracks'
-  },
-  {
-    title: labels.branchPath,
-    description: labels.branchPathDesc,
-    href: `${prefix}/branches/`,
-    meta: 'Branches'
-  }
+const stats = [
+  { value: stages.length, label: getCollectionLabel('stages', lang) },
+  { value: tracks.length, label: getCollectionLabel('tracks', lang) },
+  { value: branches.length, label: getCollectionLabel('branches', lang) },
+  { value: resources.length, label: getCollectionLabel('resources', lang) }
 ];
+const paths = [
+  { title: labels.stagePath, description: labels.stagePathDesc, href: `${prefix}/stages/`, meta: '01' },
+  { title: labels.trackPath, description: labels.trackPathDesc, href: `${prefix}/tracks/`, meta: '02' },
+  { title: labels.branchPath, description: labels.branchPathDesc, href: `${prefix}/branches/`, meta: '03' }
+];
+const firstStageHref = featuredStages[0]?.href ?? `${prefix}/stages/`;
 ---
 <BaseLayout
   title="Awesome Agentic AI 学习站"
-  description="基于 awesome-agentic-ai-zh 构建的多语言 Astro 学习地图网站。默认简体中文。"
+  description="基于 awesome-agentic-ai-zh 构建的多语言 Agentic AI 学习地图。"
   lang={lang}
   currentPath={currentPath}
   languageLinks={createSectionLanguageLinks(currentPath)}
 >
-  <section class="hero">
-    <div class="hero-card primary">
-      <span class="eyebrow">{labels.eyebrow}</span>
-      <h1 style="margin-top: 1rem; max-width: 12ch;">{labels.title}</h1>
-      <p class="hero-lead">{labels.intro}</p>
-      <div class="button-row">
-        <a class="button primary" href={`${prefix}/stages/`}>{labels.primaryCta}</a>
-        <a class="button" href={`${prefix}/roadmap/`}>{labels.secondaryCta}</a>
-        <a class="button" href={`${prefix}/updates/`}>{labels.tertiaryCta}</a>
-      </div>
+  <section class="home-hero">
+    <p class="eyebrow">{labels.eyebrow}</p>
+    <h1>{labels.title}</h1>
+    <p class="hero-lead">{labels.intro}</p>
+    <div class="button-row">
+      <a class="button primary" href={firstStageHref}>{labels.primaryCta} →</a>
+      <a class="button" href={`${prefix}/roadmap/`}>{labels.secondaryCta}</a>
     </div>
-
-    <div class="hero-card">
-      <p class="panel-title">{labels.snapshotTitle}</p>
-      <div class="stats">
-        <div class="stat"><span>Stages</span><strong>{manifest.counts.stages}</strong></div>
-        <div class="stat"><span>Tracks</span><strong>{manifest.counts.tracks}</strong></div>
-        <div class="stat"><span>Branches</span><strong>{manifest.counts.branches}</strong></div>
-        <div class="stat"><span>Resources</span><strong>{manifest.counts.resources}</strong></div>
-      </div>
-      <div class="hero-meta-list" style="margin-top: 1rem;">
-        <div class="mini-item" style="padding: 0.9rem 1rem;">
-          <div class="small muted">{labels.syncedAt}</div>
-          <div class="small"><strong>{manifest.syncedAt === 'pending-sync' ? labels.notSynced : new Date(manifest.syncedAt).toLocaleString('zh-CN', { hour12: false })}</strong></div>
+    <dl class="home-stats">
+      {stats.map((item) => (
+        <div>
+          <dt>{item.label}</dt>
+          <dd>{item.value}</dd>
         </div>
-        <div class="mini-item" style="padding: 0.9rem 1rem;">
-          <div class="small muted">{labels.commit}</div>
-          <div class="small" style="word-break: break-all;"><strong>{manifest.repoCommit}</strong></div>
-        </div>
-        <div class="mini-item" style="padding: 0.9rem 1rem;">
-          <div class="small muted">{labels.repo}</div>
-          <a class="small" href={manifest.repoUrl} target="_blank" rel="noreferrer">{manifest.repoUrl}</a>
-        </div>
-      </div>
-    </div>
+      ))}
+    </dl>
   </section>
 
   <section class="section">
     <div class="section-head">
       <div>
-        <p class="section-kicker">{labels.quickStartTitle}</p>
-        <h2>{labels.quickStartTitle}</h2>
-        <p class="section-copy">{labels.quickStartDesc}</p>
+        <h2>{labels.pathsTitle}</h2>
+        <p>{labels.pathsDesc}</p>
       </div>
     </div>
-    <CollectionGrid items={quickStarts} variant="feature" />
+    <CollectionGrid items={paths} variant="feature" />
   </section>
 
   <section class="section">
     <div class="section-head">
       <div>
-        <p class="section-kicker">{labels.featuredKicker}</p>
         <h2>{labels.featuredTitle}</h2>
-        <p class="section-copy">{labels.featuredDesc}</p>
+        <p>{labels.featuredDesc}</p>
       </div>
       <a class="section-link" href={`${prefix}/stages/`}>{labels.allStages} →</a>
     </div>
-    <CollectionGrid items={featuredStages} />
+    <CollectionGrid items={featuredStages} variant="feature" />
   </section>
 
-  <section class="section grid cols-2">
+  <section class="section grid cols-2 home-routes">
     <RouteTimeline title={labels.trackTitle} steps={trackSteps} />
     <RouteTimeline title={labels.branchTitle} steps={branchSteps} />
   </section>
-
-  <section class="section">
-    <div class="panel" style="padding: 1.1rem 1.4rem;">
-      <div class="section-head" style="margin-bottom: 0; align-items: center;">
-        <div>
-          <p class="section-kicker">{labels.syncedKicker}</p>
-          <h2>{labels.syncedTitle}</h2>
-          <p class="section-copy">{labels.syncedDesc}</p>
-        </div>
-        <a class="section-link" href={`${prefix}/updates/`}>Updates →</a>
-      </div>
-    </div>
-  </section>
 </BaseLayout>
+
+<style>
+  .home-hero {
+    padding: 2.5rem 0 1rem;
+    max-width: 52rem;
+  }
+  .home-hero h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); }
+  .home-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2.75rem;
+    margin: 2.75rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+  .home-stats div { display: flex; flex-direction: column-reverse; }
+  .home-stats dt { color: var(--muted); font-size: 0.88rem; }
+  .home-stats dd { margin: 0; font-size: 1.75rem; font-weight: 650; line-height: 1.2; }
+  .home-routes { gap: 3rem; }
+  @media (max-width: 960px) {
+    .home-hero { padding-top: 1rem; }
+    .home-routes { gap: 1rem; }
+  }
+</style>

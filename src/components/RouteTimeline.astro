@@ -10,52 +10,54 @@ interface Props {
 }
 const { title, steps } = Astro.props;
 ---
-<section class="panel timeline-panel">
-  <div class="timeline-head">
-    <p class="section-kicker">Learning path</p>
-    <h2>{title}</h2>
-  </div>
-  <div class="route-list">
+<section class="timeline">
+  <h2 class="timeline-title">{title}</h2>
+  <ol class="timeline-list">
     {steps.map((step, index) => (
-      <div class="route-item timeline-item">
-        <div class="timeline-index">{index + 1}</div>
+      <li class="timeline-item">
+        <span class="timeline-index">{index + 1}</span>
         <div>
-          <div class="badge">Step {index + 1}</div>
           <h3>{step.href ? <a href={step.href}>{step.title}</a> : step.title}</h3>
           {step.subtitle && <p class="muted small">{step.subtitle}</p>}
         </div>
-      </div>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
 
 <style>
-  .timeline-panel {
-    padding: 1.35rem;
-  }
-  .timeline-head {
-    margin-bottom: 1rem;
-  }
+  .timeline-title { margin-bottom: 1.25rem; }
+  .timeline-list { list-style: none; margin: 0; padding: 0; }
   .timeline-item {
+    position: relative;
     display: grid;
-    grid-template-columns: 42px 1fr;
-    gap: .9rem;
-    align-items: start;
+    grid-template-columns: 28px 1fr;
+    gap: 1rem;
+    padding-bottom: 1.4rem;
   }
-  .timeline-item h3 {
-    margin: .5rem 0 0;
-  }
-  .timeline-item p {
-    margin: .4rem 0 0;
+  .timeline-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 13.5px;
+    top: 30px;
+    bottom: 2px;
+    width: 1px;
+    background: var(--line);
   }
   .timeline-index {
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     display: grid;
     place-items: center;
-    background: rgba(124,156,255,0.14);
-    color: var(--text);
-    font-weight: 800;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 600;
   }
+  .timeline-item h3 { margin: 0.15rem 0 0; font-size: 1rem; line-height: 1.5; }
+  .timeline-item h3 a { color: var(--text); }
+  .timeline-item h3 a:hover { color: var(--brand); }
+  .timeline-item p { margin: 0.3rem 0 0; }
 </style>

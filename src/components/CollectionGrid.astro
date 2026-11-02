@@ -22,57 +22,54 @@ const { items, variant = 'default' } = Astro.props;
       data-search={item.searchText ?? `${item.title} ${item.description ?? ''} ${item.meta ?? ''} ${item.detail ?? ''}`}
       data-category={item.category ?? 'all'}
     >
-      <div class="collection-card-top">
-        <div class="badge">{item.meta ?? '内容'}</div>
-        <span class="collection-arrow">→</span>
-      </div>
+      {item.meta && !item.title.startsWith(item.meta) && <div class="badge">{item.meta}</div>}
       <h3>{item.title}</h3>
       {item.description && <p class="muted collection-desc">{item.description}</p>}
       {item.detail && <div class="collection-detail small">{item.detail}</div>}
+      <span class="collection-arrow" aria-hidden="true">→</span>
     </a>
   ))}
 </div>
 
 <style>
   .collection-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
-    min-height: 180px;
+    gap: 0.5rem;
     color: var(--text);
   }
-  .collection-card:hover {
-    text-decoration: none;
-  }
-  .collection-card-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
   .collection-card h3 {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    line-height: 1.45;
     margin: 0;
+    padding-right: 1.5rem;
   }
+  .collection-card:hover h3 { color: var(--brand); }
   .collection-desc {
     margin: 0;
+    font-size: 0.93rem;
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .collection-detail {
     margin-top: auto;
     color: var(--text-soft);
-    padding-top: .35rem;
-    border-top: 1px solid rgba(148,163,184,0.1);
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
   }
   .collection-arrow {
-    color: var(--muted);
-    font-weight: 800;
-    transition: transform 160ms ease, color 160ms ease;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    color: var(--line-strong);
+    transition: transform 140ms ease, color 140ms ease;
   }
   .collection-card:hover .collection-arrow {
     transform: translateX(3px);
-    color: var(--text);
-  }
-  .feature-card {
-    min-height: 200px;
+    color: var(--brand);
   }
 </style>

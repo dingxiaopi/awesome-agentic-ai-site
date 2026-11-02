@@ -40,18 +40,18 @@ export const collectionLabelMap: Record<CollectionKey, string> = {
 export function getCollectionLabel(collection: CollectionKey, lang: SiteLang) {
   const labels = {
     'zh-cn': {
-      stages: 'Stages',
-      tracks: 'Tracks',
-      branches: 'Branches',
-      resources: 'Resources',
-      walkthroughs: 'Walkthroughs'
+      stages: '学习阶段',
+      tracks: '目标路线',
+      branches: '人群路线',
+      resources: '资源',
+      walkthroughs: '实战演练'
     },
     'zh-tw': {
-      stages: 'Stages',
-      tracks: 'Tracks',
-      branches: 'Branches',
-      resources: 'Resources',
-      walkthroughs: 'Walkthroughs'
+      stages: '學習階段',
+      tracks: '目標路線',
+      branches: '族群路線',
+      resources: '資源',
+      walkthroughs: '實作演練'
     },
     en: collectionLabelMap
   } satisfies Record<SiteLang, Record<CollectionKey, string>>;

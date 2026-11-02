@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CollectionGrid from '../components/CollectionGrid.astro';
 import { getCollectionByLang } from '../lib/content';
-import { buildEntryRoute, createSectionLanguageLinks, type CollectionKey, type SiteLang } from '../lib/i18n';
+import { buildEntryRoute, createSectionLanguageLinks, getCollectionLabel, type CollectionKey, type SiteLang } from '../lib/i18n';
 
 interface Props {
   lang: SiteLang;
@@ -11,17 +11,17 @@ interface Props {
   description: string;
 }
 
-const { lang, collection, title, description } = Astro.props;
+const { lang, collection, description } = Astro.props;
+const title = getCollectionLabel(collection, lang);
 const entries = await getCollectionByLang(collection, lang);
 const labels = {
   'zh-cn': {
     overview: '内容概览',
-    total: '当前条目',
+    total: (n: number) => `共 ${n} 篇`,
+    startCta: '从第一篇开始',
     first: '首个入口',
     recommended: '推荐起步',
     recommendedDesc: '如果你不确定先读什么，可以先从下面这些代表性内容开始。',
-    allItems: '全部内容',
-    allItemsDesc: '完整索引按当前语言展示，适合系统浏览与连续阅读。',
     searchTitle: '搜索与筛选',
     searchPlaceholder: `搜索 ${title} 标题、摘要或关键词…`,
     filterAll: '全部',
@@ -33,12 +33,11 @@ const labels = {
   },
   'zh-tw': {
     overview: '內容概覽',
-    total: '目前條目',
+    total: (n: number) => `共 ${n} 篇`,
+    startCta: '從第一篇開始',
     first: '第一個入口',
     recommended: '推薦起步',
     recommendedDesc: '如果你不確定先讀什麼，可以先從下面這些代表性內容開始。',
-    allItems: '全部內容',
-    allItemsDesc: '完整索引按目前語言顯示，適合系統瀏覽與連續閱讀。',
     searchTitle: '搜尋與篩選',
     searchPlaceholder: `搜尋 ${title} 標題、摘要或關鍵字…`,
     filterAll: '全部',
@@ -50,12 +49,11 @@ const labels = {
   },
   en: {
     overview: 'Overview',
-    total: 'Entries',
+    total: (n: number) => `${n} entries`,
+    startCta: 'Start with the first',
     first: 'First entry',
     recommended: 'Recommended starting points',
     recommendedDesc: 'If you are not sure where to begin, start with a few representative entries below.',
-    allItems: 'All entries',
-    allItemsDesc: 'The full index is shown for the current language and works well for systematic reading.',
     searchTitle: 'Search and filter',
     searchPlaceholder: `Search ${title} titles, summaries, or keywords…`,
     filterAll: 'All',
@@ -71,7 +69,7 @@ const items = entries.map((entry, index) => ({
   title: entry.data.title,
   href: buildEntryRoute(collection, entry),
   description: entry.data.description,
-  meta: entry.data.order !== undefined ? `${entry.data.section} ${entry.data.order}` : entry.data.section,
+  meta: entry.data.order !== undefined ? `${entry.data.section} ${entry.data.order}` : undefined,
   detail: undefined,
   category: index < 3 ? 'start' : 'explore',
   searchText: [entry.data.title, entry.data.description ?? '', entry.data.baseSlug, entry.data.section, entry.data.languageLabel].join(' ')
@@ -87,38 +85,21 @@ const currentPath = `/${collection}/`;
   currentPath={currentPath}
   languageLinks={createSectionLanguageLinks(currentPath)}
 >
-  <section class="hero" style="grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);">
-    <div class="hero-card primary">
-      <span class="eyebrow">{labels.overview}</span>
-      <h1 style="margin-top: 1rem;">{title}</h1>
-      <p class="hero-lead">{description}</p>
-    </div>
-
-    <div class="hero-card">
-      <p class="panel-title">{labels.overview}</p>
-      <div class="stats">
-        <div class="stat">
-          <span>{labels.total}</span>
-          <strong>{entries.length}</strong>
-        </div>
-        <div class="stat">
-          <span>{labels.first}</span>
-          <strong style="font-size: 1rem; line-height: 1.4;">{firstEntry?.title ?? '—'}</strong>
-        </div>
+  <section class="page-head">
+    <p class="eyebrow">{labels.total(entries.length)}</p>
+    <h1>{title}</h1>
+    <p class="hero-lead">{description}</p>
+    {firstEntry && (
+      <div class="button-row">
+        <a class="button primary" href={firstEntry.href}>{labels.startCta} →</a>
       </div>
-      {firstEntry && (
-        <div class="mini-list" style="margin-top: 1rem;">
-          <a class="button primary" href={firstEntry.href}>{firstEntry.title}</a>
-        </div>
-      )}
-    </div>
+    )}
   </section>
 
   {featuredItems.length > 0 && (
     <section class="section">
       <div class="section-head">
         <div>
-          <p class="section-kicker">{labels.recommended}</p>
           <h2>{labels.recommended}</h2>
           <p class="section-copy">{labels.recommendedDesc}</p>
         </div>
@@ -127,10 +108,9 @@ const currentPath = `/${collection}/`;
     </section>
   )}
 
-  <section class="section surface section-search-panel">
+  <section class="section section-search-panel">
     <div class="section-head" style="margin-bottom: 1rem; align-items: center;">
       <div>
-        <p class="section-kicker">{labels.searchTitle}</p>
         <h2>{labels.searchTitle}</h2>
       </div>
       <div class="small muted"><span data-results-count>{entries.length}</span> {labels.results}</div>
@@ -145,14 +125,7 @@ const currentPath = `/${collection}/`;
     </div>
   </section>
 
-  <section class="section" data-search-scope>
-    <div class="section-head">
-      <div>
-        <p class="section-kicker">{labels.allItems}</p>
-        <h2>{labels.allItems}</h2>
-        <p class="section-copy">{labels.allItemsDesc}</p>
-      </div>
-    </div>
+  <section class="section results" data-search-scope>
     <CollectionGrid items={items} />
     <div class="search-empty" data-empty-state hidden>
       <h3>{labels.noResults}</h3>
@@ -162,58 +135,41 @@ const currentPath = `/${collection}/`;
 </BaseLayout>
 
 <style>
-  .section-search-panel {
-    padding: 1.2rem 1.35rem;
-    border: 1px solid rgba(148, 163, 184, 0.12);
-    border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, rgba(16, 24, 44, 0.88), rgba(11, 18, 34, 0.9));
-  }
-  .section-search-controls {
-    display: grid;
-    gap: .9rem;
-  }
+  .page-head { max-width: 46rem; padding: 1rem 0 0.5rem; }
+  .results { margin-top: 1.5rem; }
+  .section-search-controls { display: grid; gap: 0.75rem; }
   .section-search-input {
     width: 100%;
-    min-height: 48px;
-    border-radius: 14px;
-    border: 1px solid rgba(148,163,184,0.14);
-    background: rgba(255,255,255,0.04);
+    min-height: 44px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
     color: var(--text);
-    padding: 0 1rem;
+    padding: 0 0.9rem;
     font: inherit;
+    font-size: 0.95rem;
   }
-  .section-search-input::placeholder {
-    color: var(--muted);
-  }
-  .section-filter-row {
-    display: flex;
-    gap: .65rem;
-    flex-wrap: wrap;
-  }
+  .section-search-input:focus { outline: 2px solid var(--brand-soft); border-color: var(--brand); }
+  .section-search-input::placeholder { color: var(--muted); }
+  .section-filter-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
   .section-filter-chip {
-    border: 1px solid rgba(148,163,184,0.14);
-    background: rgba(255,255,255,0.03);
-    color: var(--text-soft);
-    padding: .58rem .85rem;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--muted);
+    padding: 0.35rem 0.75rem;
     border-radius: 999px;
     font: inherit;
-    font-size: .9rem;
-    font-weight: 700;
+    font-size: 0.86rem;
     cursor: pointer;
-    transition: 160ms ease;
+    transition: 140ms ease;
   }
-  .section-filter-chip:hover,
-  .section-filter-chip.is-active {
-    color: var(--text);
-    border-color: rgba(124,156,255,0.24);
-    background: rgba(124,156,255,0.14);
-  }
+  .section-filter-chip:hover { color: var(--text); border-color: var(--line-strong); }
+  .section-filter-chip.is-active { color: var(--brand); border-color: var(--brand); background: var(--brand-soft); }
   .search-empty {
     margin-top: 1rem;
     padding: 1.2rem 1.25rem;
-    border-radius: 16px;
-    border: 1px dashed rgba(148,163,184,0.18);
-    background: rgba(255,255,255,0.02);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--line-strong);
   }
 </style>
 

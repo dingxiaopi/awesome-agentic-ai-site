@@ -1,7 +1,7 @@
 ---
 import ContentLayout from '../layouts/ContentLayout.astro';
 import { render } from 'astro:content';
-import { getEntryForLang } from '../lib/content';
+import { getEntryForLang, splitEntryTitle } from '../lib/content';
 import { buildEntryRoute, getCollectionLabel, type CollectionKey, type SiteLang } from '../lib/i18n';
 import manifest from '../data/sync-manifest.json';
 
@@ -20,6 +20,7 @@ const { entry, languageLinks, collectionEntries, previousEntry, nextEntry, summa
 const { Content, headings } = await render(entry);
 const currentPath = `/${collection}/${baseSlug}/`;
 const collectionItems = collectionEntries.map((item) => ({
+  ...splitEntryTitle(item.data.title),
   title: item.data.title,
   href: buildEntryRoute(collection, item),
   active: item.data.baseSlug === baseSlug

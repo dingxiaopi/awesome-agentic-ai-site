@@ -10,6 +10,8 @@ interface Heading {
 
 interface CollectionNavItem {
   title: string;
+  name?: string;
+  index?: string;
   href: string;
   active: boolean;
 }
@@ -62,11 +64,11 @@ const {
 
 const ui = {
   'zh-cn': {
-    doc: 'Documentation',
-    home: 'Home',
+    doc: '',
+    home: '首页',
     langVersion: '语言版本',
-    syncedAt: '最近同步',
-    sourceRepo: '查看原仓库',
+    syncedAt: '更新于',
+    sourceRepo: '在 GitHub 查看原文',
     sourcePath: '查看源文件路径',
     prev: '上一页',
     next: '下一页',
@@ -79,11 +81,11 @@ const ui = {
     link: '复制标题链接'
   },
   'zh-tw': {
-    doc: 'Documentation',
-    home: 'Home',
+    doc: '',
+    home: '首頁',
     langVersion: '語言版本',
-    syncedAt: '最近同步',
-    sourceRepo: '查看原倉庫',
+    syncedAt: '更新於',
+    sourceRepo: '在 GitHub 查看原文',
     sourcePath: '查看原始檔案路徑',
     prev: '上一頁',
     next: '下一頁',
@@ -99,8 +101,8 @@ const ui = {
     doc: 'Documentation',
     home: 'Home',
     langVersion: 'Language',
-    syncedAt: 'Last synced',
-    sourceRepo: 'View source repo',
+    syncedAt: 'Updated',
+    sourceRepo: 'View on GitHub',
     sourcePath: 'View source file path',
     prev: 'Previous',
     next: 'Next',
@@ -114,8 +116,11 @@ const ui = {
   }
 }[lang];
 
-const docHeadings = headings.filter((item) => item.depth >= 2 && item.depth <= 4);
-const syncedText = new Date(syncedAt).toLocaleString('zh-CN', { hour12: false });
+// 目录只列二级标题，并去掉开头的 emoji，保持简洁
+const docHeadings = headings
+  .filter((item) => item.depth === 2)
+  .map((item) => ({ ...item, text: item.text.replace(/^[\p{Extended_Pictographic}\uFE0F\u200D\s]+/u, '') }));
+const syncedText = new Date(syncedAt).toLocaleDateString(lang === 'en' ? 'en' : lang === 'zh-tw' ? 'zh-TW' : 'zh-CN');
 const collectionHome = buildLangPath(lang, `/${collection}/`);
 ---
 <BaseLayout
@@ -126,94 +131,76 @@ const collectionHome = buildLangPath(lang, `/${collection}/`);
   languageLinks={languageLinks}
 >
   <div class="reading-progress" data-reading-progress></div>
-  <div class="section" style="margin-top: 0;">
-    <div class="section-head" style="margin-bottom: 1.2rem; align-items: start;">
-      <div>
-        <p class="section-kicker">{ui.doc}</p>
-        <div class="doc-breadcrumb small muted">
+  <div class="doc">
+    <aside class="sidebar-panel">
+      <a class="panel-title sidebar-home" href={collectionHome}>{taxonomy?.collectionLabel ?? collectionLabel}</a>
+      <nav class="collection-nav" aria-label={`${collectionLabel} navigation`}>
+        {collectionItems.map((item) => (
+          <div class="nav-group">
+            <a class:list={["collection-nav-link", item.active && 'active']} href={item.href} title={item.title} aria-current={item.active ? 'page' : undefined}>
+              {item.index && <span class="nav-index">{item.index}</span>}
+              <span>{item.name ?? item.title}</span>
+            </a>
+            {item.active && docHeadings.length > 0 && (
+              <ul class="page-toc" aria-label={ui.onThisPage}>
+                {docHeadings.map((heading) => (
+                  <li><a href={`#${heading.slug}`} data-toc-link={heading.slug}>{heading.text}</a></li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))}
+      </nav>
+    </aside>
+
+    <article class="markdown doc-article" data-doc-article>
+      <header class="doc-header">
+        <nav class="doc-breadcrumb small" aria-label="Breadcrumb">
           <a href={buildLangPath(lang, '/')}>{ui.home}</a>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
           <a href={collectionHome}>{taxonomy?.collectionLabel ?? collectionLabel}</a>
-          <span>/</span>
-          <span>{taxonomy?.orderLabel ?? collectionLabel}</span>
-        </div>
-        <div class="doc-taxonomy-row">
-          <span class="doc-taxonomy-badge">{taxonomy?.collectionLabel ?? collectionLabel}</span>
-          <span class="doc-taxonomy-badge">{taxonomy?.sectionLabel ?? collectionLabel}</span>
-          <span class="doc-taxonomy-badge">{taxonomy?.languageLabel ?? lang}</span>
-        </div>
-        <h1 class="doc-title" style="font-size: clamp(2rem, 3vw, 3rem); margin-top: 0.55rem;">{title}</h1>
-        {description && <p class="hero-lead" style="margin-top: 0.75rem; max-width: 52rem;">{description}</p>}
-      </div>
-    </div>
-
-    <section class="doc">
-      <aside class="sidebar-panel surface">
-        <div class="panel-title">{collectionLabel}</div>
-        <nav class="collection-nav" aria-label={`${collectionLabel} navigation`}>
-          {collectionItems.map((item) => (
-            <a class:list={["collection-nav-link", item.active && 'active']} href={item.href}>{item.title}</a>
-          ))}
         </nav>
+        <h1 class="doc-title">{title}</h1>
+      </header>
 
-        <div class="meta-list" style="margin-top: 1rem;">
-          <div class="doc-meta-item" style="padding: 0.85rem 0.95rem;">
-            <div class="small muted">{ui.langVersion}</div>
-            <div class="small"><strong>{languageLinks.find((item) => item.lang === lang)?.label ?? lang}</strong></div>
-          </div>
-          <div class="doc-meta-item" style="padding: 0.85rem 0.95rem;">
-            <div class="small muted">{ui.syncedAt}</div>
-            <div class="small"><strong>{syncedText}</strong></div>
-          </div>
-        </div>
-
-        <div class="mini-list" style="margin-top: 1rem;">
-          <a class="button" href={sourceUrl} target="_blank" rel="noreferrer">{ui.sourceRepo}</a>
-          <details class="source-details">
-            <summary>{ui.sourcePath}</summary>
-            <div class="small muted source-path">{sourcePath}</div>
-          </details>
-        </div>
-      </aside>
-
-      <article class="markdown doc-article" data-doc-article>
-        <div class="doc-body">
-          <slot />
-        </div>
-
-        {(previousLink || nextLink) && (
-          <div class="doc-pagination">
-            {previousLink ? (
-              <a class="doc-page-link prev" href={previousLink.href}>
-                <span class="small muted">{ui.prev}</span>
-                <strong>{previousLink.title}</strong>
-              </a>
-            ) : <div></div>}
-            {nextLink ? (
-              <a class="doc-page-link next" href={nextLink.href}>
-                <span class="small muted">{ui.next}</span>
-                <strong>{nextLink.title}</strong>
-              </a>
-            ) : <div></div>}
-          </div>
-        )}
-      </article>
-
-      <aside class="toc surface">
-        <div class="toc-title">{ui.onThisPage}</div>
-        {docHeadings.length > 0 ? (
+      {docHeadings.length > 0 && (
+        <details class="mobile-toc">
+          <summary>{ui.onThisPage}</summary>
           <ul>
             {docHeadings.map((heading) => (
-              <li>
-                <a class:list={[`depth-${heading.depth}`]} href={`#${heading.slug}`}>{heading.text}</a>
-              </li>
+              <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
             ))}
           </ul>
-        ) : (
-          <p class="empty-note">{ui.emptyToc}</p>
-        )}
-      </aside>
-    </section>
+        </details>
+      )}
+
+      <div class="doc-body">
+        <slot />
+      </div>
+
+      <p class="doc-source small">
+        <a href={sourceUrl} target="_blank" rel="noreferrer">{ui.sourceRepo} ↗</a>
+        <span aria-hidden="true">·</span>
+        <span>{ui.syncedAt} {syncedText}</span>
+      </p>
+
+      {(previousLink || nextLink) && (
+        <nav class="doc-pagination">
+          {previousLink ? (
+            <a class="doc-page-link prev" href={previousLink.href}>
+              <span class="small muted">← {ui.prev}</span>
+              <strong>{previousLink.title}</strong>
+            </a>
+          ) : <div></div>}
+          {nextLink ? (
+            <a class="doc-page-link next" href={nextLink.href}>
+              <span class="small muted">{ui.next} →</span>
+              <strong>{nextLink.title}</strong>
+            </a>
+          ) : <div></div>}
+        </nav>
+      )}
+    </article>
   </div>
 
   <button class="back-to-top" type="button" data-back-to-top>{ui.backToTop}</button>
@@ -226,186 +213,165 @@ const collectionHome = buildLangPath(lang, `/${collection}/`);
     position: fixed;
     top: 0;
     left: 0;
-    height: 3px;
+    height: 2px;
     width: 0;
     z-index: 60;
-    background: linear-gradient(90deg, var(--brand), #80e2b6);
-    box-shadow: 0 0 16px rgba(124,156,255,.55);
+    background: var(--brand);
   }
-  .collection-nav {
-    display: grid;
-    gap: .35rem;
-  }
-  .doc-taxonomy-row {
+  .doc-header { margin-bottom: 2rem; }
+  .doc-breadcrumb {
     display: flex;
     flex-wrap: wrap;
-    gap: .55rem;
-    margin-top: .85rem;
-  }
-  .doc-taxonomy-badge {
-    display: inline-flex;
-    align-items: center;
-    padding: .38rem .65rem;
-    border-radius: 999px;
-    border: 1px solid rgba(148,163,184,0.14);
-    background: rgba(255,255,255,0.04);
-    color: var(--text-soft);
-    font-size: .78rem;
-    font-weight: 800;
-    letter-spacing: .02em;
-  }
-  .collection-nav-link {
-    display: block;
-    padding: .7rem .85rem;
-    border-radius: 12px;
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
     color: var(--muted);
-    border: 1px solid transparent;
-    line-height: 1.45;
-    font-size: .92rem;
   }
-  .collection-nav-link:hover {
-    color: var(--text);
-    background: rgba(255,255,255,0.04);
+  .doc-breadcrumb a { color: var(--muted); text-decoration: none; }
+  .doc-breadcrumb a:hover { color: var(--text); }
+  .doc-title { font-size: clamp(1.75rem, 3vw, 2.3rem); line-height: 1.25; }
+  .sidebar-home { display: block; text-decoration: none; }
+  .sidebar-home:hover { color: var(--text); }
+  .collection-nav { display: grid; gap: 1px; }
+  .collection-nav-link {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.4rem 0.6rem;
+    border-radius: 7px;
+    color: var(--muted);
+    line-height: 1.5;
+    font-size: 0.9rem;
   }
-  .collection-nav-link.active {
-    color: var(--text);
-    background: rgba(124,156,255,0.14);
-    border-color: rgba(124,156,255,0.22);
+  .collection-nav-link:hover { color: var(--text); background: var(--surface-2); }
+  .collection-nav-link.active { color: var(--brand); background: var(--brand-soft); font-weight: 500; }
+  .nav-index {
+    flex: 0 0 1.6rem;
+    color: var(--line-strong);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.85;
   }
-  .source-details {
-    padding: .75rem .85rem;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(148,163,184,0.12);
+  .collection-nav-link.active .nav-index { color: var(--brand); }
+  .doc-source {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 3rem 0 0;
+    color: var(--muted);
   }
-  .source-details summary {
-    cursor: pointer;
-    color: var(--text-soft);
-    font-weight: 700;
+  .doc-source a { color: var(--muted) !important; text-decoration: none !important; }
+  .doc-source a:hover { color: var(--brand) !important; }
+  .page-toc {
+    list-style: none;
+    margin: 0.25rem 0 0.6rem 1.15rem;
+    padding: 0;
+    border-left: 1px solid var(--line);
   }
-  .source-path {
-    margin-top: .7rem;
-    word-break: break-word;
+  .page-toc a {
+    display: block;
+    margin-left: -1px;
+    padding: 0.28rem 0 0.28rem 0.85rem;
+    border-left: 1px solid transparent;
+    color: var(--muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
-  .doc-body > :first-child:is(h1) {
-    display: none;
-  }
+  .page-toc a:hover { color: var(--text); }
+  .page-toc a.is-active { color: var(--brand); border-left-color: var(--brand); }
+  .doc-body > :global(h1:first-child) { display: none; }
   .doc-body :global(h2),
   .doc-body :global(h3),
-  .doc-body :global(h4) {
-    position: relative;
-  }
+  .doc-body :global(h4) { position: relative; }
   .doc-body :global(.heading-anchor) {
     opacity: 0;
-    margin-left: .45rem;
+    margin-left: 0.4rem;
     color: var(--muted);
-    font-size: .85em;
+    font-size: 0.85em;
+    text-decoration: none;
     transition: 140ms ease;
   }
   .doc-body :global(h2:hover .heading-anchor),
   .doc-body :global(h3:hover .heading-anchor),
   .doc-body :global(h4:hover .heading-anchor),
-  .doc-body :global(.heading-anchor:focus-visible) {
-    opacity: 1;
-  }
+  .doc-body :global(.heading-anchor:focus-visible) { opacity: 1; }
   .doc-pagination {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .9rem;
-    margin-top: 2rem;
-    padding-top: 1.4rem;
-    border-top: 1px solid rgba(148,163,184,0.1);
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
   }
   .doc-page-link {
     display: flex;
     flex-direction: column;
-    gap: .2rem;
-    padding: 1rem;
-    border-radius: 16px;
-    border: 1px solid rgba(148,163,184,0.12);
-    background: rgba(255,255,255,0.03);
+    gap: 0.25rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
     color: var(--text);
+    text-decoration: none !important;
+    transition: border-color 140ms ease;
   }
-  .doc-page-link:hover {
-    background: rgba(255,255,255,0.05);
-    border-color: rgba(148,163,184,0.22);
-  }
-  .doc-page-link.next {
-    text-align: right;
-  }
-  .doc-article :global(pre) {
-    position: relative;
-  }
+  .doc-page-link strong { font-weight: 550; line-height: 1.5; }
+  .doc-page-link:hover { border-color: var(--brand); }
+  .doc-page-link:hover strong { color: var(--brand); }
+  .doc-page-link.next { text-align: right; }
+  .doc-article :global(pre) { position: relative; }
   .doc-article :global(.code-language-badge) {
     position: absolute;
-    top: .75rem;
-    left: .75rem;
-    padding: .32rem .5rem;
-    border-radius: 999px;
-    background: rgba(255,255,255,0.08);
-    color: var(--text-soft);
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: .04em;
+    top: 0.7rem;
+    left: 1.1rem;
+    color: #8b919c;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
   .doc-article :global(.copy-code-button) {
     position: absolute;
-    top: .75rem;
-    right: .75rem;
-    border: 1px solid rgba(148,163,184,0.16);
-    background: rgba(9,16,29,0.86);
-    color: var(--text-soft);
-    border-radius: 10px;
-    padding: .42rem .65rem;
-    font-size: .78rem;
-    font-weight: 700;
+    top: 0.5rem;
+    right: 0.6rem;
+    border: 1px solid #2e323a;
+    background: #1f2228;
+    color: #b8bdc7;
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+    font: inherit;
+    font-size: 0.75rem;
     cursor: pointer;
-    transition: 160ms ease;
+    transition: 140ms ease;
   }
-  .doc-article :global(.copy-code-button:hover) {
-    color: var(--text);
-    border-color: rgba(148,163,184,0.28);
-    background: rgba(18,27,47,0.96);
-  }
-  .doc-article :global(.copy-code-button[data-copied='true']) {
-    color: #d8ffe8;
-    border-color: rgba(128,226,182,0.28);
-    background: rgba(27,61,46,0.92);
-  }
+  .doc-article :global(.copy-code-button:hover) { color: #fff; border-color: #444a55; }
+  .doc-article :global(.copy-code-button[data-copied='true']) { color: #9be2bd; border-color: #2f5a45; }
   .back-to-top {
     position: fixed;
-    right: 1.4rem;
-    bottom: 1.4rem;
+    right: 1.25rem;
+    bottom: 1.25rem;
     z-index: 50;
-    border: 1px solid rgba(148,163,184,0.16);
-    background: rgba(10,16,30,0.92);
-    color: var(--text-soft);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--muted);
     border-radius: 999px;
-    padding: .78rem 1rem;
+    padding: 0.55rem 0.9rem;
     font: inherit;
-    font-size: .88rem;
-    font-weight: 800;
+    font-size: 0.85rem;
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
     transform: translateY(8px);
     transition: 180ms ease;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 14px -6px rgba(0, 0, 0, 0.2);
   }
-  .back-to-top.is-visible {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
+  .back-to-top:hover { color: var(--text); }
+  .back-to-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .mobile-toc { display: none; }
   @media (max-width: 960px) {
-    .doc-pagination {
-      grid-template-columns: 1fr;
-    }
-    .back-to-top {
-      right: 1rem;
-      bottom: 1rem;
-    }
+    .mobile-toc { display: block; margin: -0.5rem 0 1.5rem; }
+    .mobile-toc ul { margin: 0; padding: 0.5rem 1rem 0.75rem 2.1rem; }
+    .mobile-toc li { margin: 0.2rem 0; }
+    .mobile-toc a { color: var(--text-soft); text-decoration: none; }
+    .doc-pagination { grid-template-columns: 1fr; }
+    .back-to-top { right: 1rem; bottom: 1rem; }
   }
 </style>
 
@@ -497,7 +463,24 @@ const collectionHome = buildLangPath(lang, `/${collection}/`);
     update();
   };
 
+  const setupTocHighlight = () => {
+    const links = new Map();
+    document.querySelectorAll('[data-toc-link]').forEach((link) => links.set(link.getAttribute('data-toc-link'), link));
+    if (links.size === 0) return;
+    const headings = Array.from(document.querySelectorAll('.doc-body h2[id]')).filter((h) => links.has(h.id));
+    const update = () => {
+      let current = headings[0];
+      for (const heading of headings) {
+        if (heading.getBoundingClientRect().top < 120) current = heading;
+      }
+      links.forEach((link, id) => link.classList.toggle('is-active', id === current?.id));
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  };
+
   const boot = () => {
+    setupTocHighlight();
     setupCopyButtons();
     setupHeadingAnchors();
     setupReadingProgress();

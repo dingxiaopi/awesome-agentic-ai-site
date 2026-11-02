@@ -15,18 +15,18 @@ const [stages, tracks] = await Promise.all([
 
 const labels = {
   'zh-cn': {
-    eyebrow: 'Learning Roadmap',
+    eyebrow: '路线图',
     title: '学习地图总览',
-    intro: '这里把 Stage 与 Track 按当前语言整理成更清晰的路线视图，默认简体中文。',
+    intro: '按顺序读完所有学习阶段，再根据目标挑选补充路线。',
     stageTitle: '共用基础 + 进阶主线',
-    trackTitle: '补充 Track'
+    trackTitle: '补充路线'
   },
   'zh-tw': {
-    eyebrow: 'Learning Roadmap',
+    eyebrow: '路線圖',
     title: '學習地圖總覽',
-    intro: '這裡把 Stage 與 Track 按目前語言整理成更清晰的路線視圖，預設簡體中文。',
+    intro: '按順序讀完所有學習階段，再依目標挑選補充路線。',
     stageTitle: '共用基礎 + 進階主線',
-    trackTitle: '補充 Track'
+    trackTitle: '補充路線'
   },
   en: {
     eyebrow: 'Learning Roadmap',
@@ -44,33 +44,85 @@ const labels = {
   currentPath="/roadmap/"
   languageLinks={createSectionLanguageLinks('/roadmap/')}
 >
-  <section class="panel">
-    <span class="eyebrow">{labels.eyebrow}</span>
+  <section class="page-head">
+    <p class="eyebrow">{labels.eyebrow}</p>
     <h1>{labels.title}</h1>
-    <p class="muted">{labels.intro}</p>
+    <p class="hero-lead">{labels.intro}</p>
   </section>
 
-  <section class="section-head"><div><h2>{labels.stageTitle}</h2></div></section>
-  <div class="route-list">
-    {stages.map((entry) => (
-      <a class="route-item" href={buildEntryRoute('stages', entry)}>
-        <div>
-          <div class="badge">Stage {entry.data.order ?? '-'}</div>
+  <section class="section">
+    <h2 class="roadmap-heading">{labels.stageTitle}</h2>
+    <ol class="roadmap">
+      {stages.map((entry) => (
+        <li class="roadmap-item">
+          <span class="roadmap-index">{entry.data.order ?? '-'}</span>
+          <a class="roadmap-card" href={buildEntryRoute('stages', entry)}>
+            <h3>{entry.data.title}</h3>
+            {entry.data.description && <p class="muted small">{entry.data.description}</p>}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2 class="roadmap-heading">{labels.trackTitle}</h2>
+    <div class="grid cols-2">
+      {tracks.map((entry) => (
+        <a class="card track-card" href={buildEntryRoute('tracks', entry)}>
           <h3>{entry.data.title}</h3>
           {entry.data.description && <p class="muted small">{entry.data.description}</p>}
-        </div>
-      </a>
-    ))}
-  </div>
-
-  <section class="section-head"><div><h2>{labels.trackTitle}</h2></div></section>
-  <div class="grid cols-2">
-    {tracks.map((entry) => (
-      <a class="card" href={buildEntryRoute('tracks', entry)}>
-        <div class="badge">{entry.data.section}</div>
-        <h3>{entry.data.title}</h3>
-        {entry.data.description && <p class="muted">{entry.data.description}</p>}
-      </a>
-    ))}
-  </div>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
+
+<style>
+  .page-head { max-width: 46rem; padding: 1rem 0 0; }
+  .roadmap-heading { margin-bottom: 1.5rem; }
+  .roadmap { list-style: none; margin: 0; padding: 0; max-width: 52rem; }
+  .roadmap-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 1.1rem;
+    padding-bottom: 1rem;
+  }
+  .roadmap-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 17.5px;
+    top: 40px;
+    bottom: 4px;
+    width: 1px;
+    background: var(--line-strong);
+  }
+  .roadmap-index {
+    width: 36px;
+    height: 36px;
+    margin-top: 0.75rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .roadmap-card {
+    display: block;
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid transparent;
+    color: var(--text);
+    transition: background 140ms ease, border-color 140ms ease;
+  }
+  .roadmap-card:hover { background: var(--surface); border-color: var(--line); }
+  .roadmap-card:hover h3 { color: var(--brand); }
+  .roadmap-card h3, .track-card h3 { line-height: 1.5; }
+  .roadmap-card p, .track-card p { margin: 0.35rem 0 0; line-height: 1.7; }
+  .track-card { color: var(--text); }
+  .track-card:hover h3 { color: var(--brand); }
+</style>

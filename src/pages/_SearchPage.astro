@@ -65,15 +65,12 @@ const collectionFilters = Array.from(new Set(results.map((item) => item.collecti
   currentPath={currentPath}
   languageLinks={createSectionLanguageLinks(currentPath)}
 >
-  <section class="hero" style="grid-template-columns: 1fr;">
-    <div class="hero-card primary">
-      <span class="eyebrow">{labels.eyebrow}</span>
-      <h1 style="margin-top: 1rem; max-width: 15ch;">{labels.title}</h1>
-      <p class="hero-lead">{labels.intro}</p>
-    </div>
+  <section class="page-head">
+    <h1>{labels.title}</h1>
+    <p class="hero-lead">{labels.intro}</p>
   </section>
 
-  <section class="section surface search-panel">
+  <section class="section search-panel">
     <div class="search-controls">
       <input data-global-search-input class="search-input" type="search" placeholder={labels.input} />
       <div class="filter-row" role="tablist" aria-label={labels.eyebrow}>
@@ -85,14 +82,8 @@ const collectionFilters = Array.from(new Set(results.map((item) => item.collecti
     </div>
   </section>
 
-  <section class="section" data-global-search-scope>
-    <div class="section-head" style="align-items:center;">
-      <div>
-        <p class="section-kicker">{labels.eyebrow}</p>
-        <h2>{labels.title}</h2>
-      </div>
-      <div class="small muted"><span data-results-count>{items.length}</span> {labels.results}</div>
-    </div>
+  <section class="section results" data-global-search-scope>
+    <p class="small muted results-count"><span data-results-count>{items.length}</span> {labels.results}</p>
     <CollectionGrid items={items} />
     <div class="search-empty" data-empty-state hidden>
       <h3>{labels.empty}</h3>
@@ -102,29 +93,25 @@ const collectionFilters = Array.from(new Set(results.map((item) => item.collecti
 </BaseLayout>
 
 <style>
-  .search-panel {
-    padding: 1.2rem 1.35rem;
-    border: 1px solid rgba(148,163,184,0.12);
-    border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, rgba(16, 24, 44, 0.88), rgba(11, 18, 34, 0.9));
-  }
-  .search-controls { display: grid; gap: .9rem; }
+  .page-head { max-width: 46rem; padding: 1rem 0 0; }
+  .search-panel { margin-top: 1.75rem; }
+  .results { margin-top: 1.5rem; }
+  .results-count { margin: 0 0 0.75rem; }
+  .search-controls { display: grid; gap: 0.75rem; }
   .search-input {
-    width: 100%; min-height: 50px; border-radius: 14px; border: 1px solid rgba(148,163,184,0.14);
-    background: rgba(255,255,255,0.04); color: var(--text); padding: 0 1rem; font: inherit;
+    width: 100%; min-height: 48px; border-radius: var(--radius-md); border: 1px solid var(--line-strong);
+    background: var(--surface); color: var(--text); padding: 0 1rem; font: inherit; font-size: 1rem;
   }
+  .search-input:focus { outline: 2px solid var(--brand-soft); border-color: var(--brand); }
   .search-input::placeholder { color: var(--muted); }
-  .filter-row { display:flex; flex-wrap:wrap; gap:.65rem; }
+  .filter-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .filter-chip {
-    border: 1px solid rgba(148,163,184,0.14); background: rgba(255,255,255,0.03); color: var(--text-soft);
-    padding: .58rem .85rem; border-radius:999px; font:inherit; font-size:.9rem; font-weight:700; cursor:pointer; transition:160ms ease;
+    border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+    padding: 0.35rem 0.75rem; border-radius: 999px; font: inherit; font-size: 0.86rem; cursor: pointer; transition: 140ms ease;
   }
-  .filter-chip:hover, .filter-chip.is-active {
-    color: var(--text); border-color: rgba(124,156,255,0.24); background: rgba(124,156,255,0.14);
-  }
-  .search-empty {
-    margin-top: 1rem; padding: 1.2rem 1.25rem; border-radius: 16px; border: 1px dashed rgba(148,163,184,0.18); background: rgba(255,255,255,0.02);
-  }
+  .filter-chip:hover { color: var(--text); border-color: var(--line-strong); }
+  .filter-chip.is-active { color: var(--brand); border-color: var(--brand); background: var(--brand-soft); }
+  .search-empty { margin-top: 1rem; padding: 1.2rem 1.25rem; border-radius: var(--radius-md); border: 1px dashed var(--line-strong); }
 </style>
 
 <script>
