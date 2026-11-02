@@ -12,8 +12,6 @@ order: 2
 ---
 # A2 — Make CLI agents follow the same method every time
 
-> [繁體中文](/zh-tw/tracks/cli-a2-cli-workflow/) | [简体中文](/tracks/cli-a2-cli-workflow/) | **English**
-
 > [← A1 — Safely complete your first CLI task](/en/tracks/cli-a1-cli-intro/) · **Track A: CLI Power User** Stop 2 · [Next: Stage 5 Track A core](/en/stages/05-claude-code-ecosystem/#-entry-requirements-and-reading-paths)
 
 This stop answers one question: **How do you make a CLI agent remember the same way of working when it enters the same repo next time?**

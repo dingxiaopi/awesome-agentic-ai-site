@@ -259,11 +259,11 @@ Budget: Path A has a `$0` API charge per run; Path B is calculated from actual t
 
 Every folder has a trilingual README, `starter.py`, `starter_anthropic.py`, `test.py`, and `test_anthropic.py`. Install its requirements first and then run the mock test; after it succeeds, follow the README to start a real model:
 
-1. [Exercise 1 README](/en)
-2. [Exercise 2 README](/en)
-3. [Exercise 3 README](/en)
-4. [Exercise 4 README](/en)
-5. [Exercise 5 README](/en)
+1. [Exercise 1 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/01-same-agent-two-frameworks/README.en.md)
+2. [Exercise 2 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/02-multi-agent-roles/README.en.md)
+3. [Exercise 3 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/03-graph-workflow/README.en.md)
+4. [Exercise 4 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/04-codeact-vs-json-tool/README.en.md)
+5. [Exercise 5 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/05-typed-agent/README.en.md)
 
 If `py -3.11` cannot find Python, run `py -0p` to see installed versions. Do not force-install CrewAI 1.15.18 on Python 3.14; create a Python 3.11 virtual environment.
 

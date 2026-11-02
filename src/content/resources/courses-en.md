@@ -11,8 +11,6 @@ baseSlug: "courses"
 ---
 # AI Agent Course Map: Learn First, Then Decide Whether to Get a Certificate
 
-> [繁體中文](/zh-tw/resources/courses/) | [简体中文](/resources/courses/) | **English**
-
 <!-- freshness: canonical=resources/courses.md; verified_on=2026-08-29; scope=course-availability,cost,certificate,assessment,repository-status; max_age_days=90 -->
 
 This page helps you do one thing: **choose one course that truly fits you right now.** You do not need to collect certificates first or sign up for five courses at once. Choose one, build something you can show, and then take the next step.

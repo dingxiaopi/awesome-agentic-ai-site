@@ -14,8 +14,6 @@ order: 1
 
 **LLM**（Large Language Model）：能读写语言的模型。
 
-> [繁體中文](/zh-tw/stages/01-llm-basics/) | [English](/en/stages/01-llm-basics/) | **简体中文**
-
 > 本章目的：先看懂模型如何从数据走到 Agent，再通过一条可重复的本地到云端路径调用 LLM。你会理解 **Token（词元）**、**Context Window（上下文窗口）** 和 **Temperature（温度）**，也会用成本与延迟解释模型选择。
 
 <!-- freshness: canonical=stages/01-llm-basics.md; verified_on=2026-09-22; scope=models,pricing,availability,deprecations,model-lifecycle; max_age_days=90 -->
@@ -453,7 +451,7 @@ print("\n✅ 练习 3 通过（Anthropic）— 已计算本次成本；跨模型
 <details markdown="1">
 <summary>🔬 练习 4 详细路径（选做）</summary>
 
-- **Path A（Ollama，主要练习）：** 使用 [`examples/stage-1/04-cross-provider/`](../examples/stage-1/04-cross-provider/) 的 Ollama 调用，先建立本地基线。
+- **Path A（Ollama，主要练习）：** 使用 [`examples/stage-1/04-cross-provider/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-1/04-cross-provider/) 的 Ollama 调用，先建立本地基线。
 - **Path B（Anthropic，可选）：** 在同一数据集加入 Anthropic SDK；如果也加入 OpenAI／Google，分别记录型号、参数、token 和失败情况。
 - 比较回答风格、长度、格式遵守度和事实遗漏；把结果视为你的任务小评测，不是官方规格或普遍排名。
 
@@ -468,7 +466,7 @@ print("\n✅ 练习 3 通过（Anthropic）— 已计算本次成本；跨模型
 <details markdown="1">
 <summary>🧰 练习 5 详细路径（选做）</summary>
 
-- **Path A（Ollama，主要练习）：** 先在 [`examples/stage-1/05-error-handling/`](../examples/stage-1/05-error-handling/) 运行 mock-based test，再用本地端点观察可恢复的网络错误。
+- **Path A（Ollama，主要练习）：** 先在 [`examples/stage-1/05-error-handling/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-1/05-error-handling/) 运行 mock-based test，再用本地端点观察可恢复的网络错误。
 - **Path B（Anthropic，可选）：** 用 Anthropic SDK 的异常类型接上同一 retry wrapper；API key 错误和 context 过长不应无限重试。
 - 至少覆盖错误 API key、提示过长和网络中断；exponential backoff 要有上限和明确的最大尝试次数。
 

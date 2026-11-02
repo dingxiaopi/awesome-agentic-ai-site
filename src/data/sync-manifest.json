@@ -2,13 +2,13 @@
   "repoUrl": "https://github.com/WenyuChiou/awesome-agentic-ai-zh",
   "repoRef": "main",
   "repoCommit": "6d9ca6f6d2a2e1cdcf6a773b5c2b8b11ffb4fe9c",
-  "syncedAt": "2026-11-02T09:58:57.320Z",
+  "syncedAt": "2026-11-02T13:36:16.743Z",
   "defaultLanguage": "zh-cn",
   "counts": {
-    "stages": 31,
+    "stages": 30,
     "tracks": 9,
-    "branches": 16,
-    "resources": 47,
+    "branches": 15,
+    "resources": 45,
     "walkthroughs": 3
   }
 }

@@ -9,8 +9,6 @@ language: "en"
 languageLabel: "English"
 baseSlug: "agent-paradigms"
 ---
-> [繁體中文](/zh-tw/resources/agent-paradigms/) | [简体中文](/resources/agent-paradigms/) | **English**
-
 # How to classify Agent tools: identity, surface, and deployment
 
 > [← Back to the main README](/en)

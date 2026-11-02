@@ -1,5 +1,5 @@
 ---
-title: "🚀 从零开始 — 给没有开发背景的设置指南"
+title: "从零开始 — 给没有开发背景的设置指南"
 description: "这一页不是要你把所有工具都装一遍。你只要先选一扇门，完成一个小结果。"
 section: "Resource"
 sourcePath: "resources/setup-guide.zh-Hans.md"
@@ -9,8 +9,6 @@ language: "zh-cn"
 languageLabel: "简体中文"
 baseSlug: "setup-guide"
 ---
-> [繁體中文](/zh-tw/resources/setup-guide/) | **简体中文** | [English](/en/resources/setup-guide/)
-
 # 🚀 从零开始 — 给没有开发背景的设置指南
 
 > [← 返回主路线 README](/)

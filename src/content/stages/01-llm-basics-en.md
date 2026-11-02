@@ -14,8 +14,6 @@ order: 1
 
 **LLM** (Large Language Model): a model that reads and writes language.
 
-> [繁體中文](/zh-tw/stages/01-llm-basics/) | **English** | [简体中文](/stages/01-llm-basics/)
-
 > Purpose: first see how a model moves from data to an Agent, then use a repeatable local-to-cloud path to call an LLM through an API (application programming interface). You will understand **Token**, **Context Window**, and **Temperature**, and explain model choices using cost and latency.
 
 <!-- freshness: canonical=stages/01-llm-basics.md; verified_on=2026-09-22; scope=models,pricing,availability,deprecations,model-lifecycle; max_age_days=90 -->
@@ -453,7 +451,7 @@ The table below keeps the 17 original extension entries. They are optional, not 
 <details markdown="1">
 <summary>🔬 Exercise 4 details (optional)</summary>
 
-- **Path A (Ollama, main practice):** Use the Ollama call in [`examples/stage-1/04-cross-provider/`](../examples/stage-1/04-cross-provider/) as the local baseline.
+- **Path A (Ollama, main practice):** Use the Ollama call in [`examples/stage-1/04-cross-provider/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-1/04-cross-provider/) as the local baseline.
 - **Path B (Anthropic, optional):** Add the Anthropic SDK to the same dataset; if you add OpenAI or Google too, record model, parameters, tokens, and failures for each.
 - Compare style, length, format adherence, and omitted facts. Treat this as a small task evaluation, not an official specification or universal ranking.
 
@@ -468,7 +466,7 @@ The starter runs three SDKs in parallel and skips providers without keys. It is 
 <details markdown="1">
 <summary>🧰 Exercise 5 details (optional)</summary>
 
-- **Path A (Ollama, main practice):** Run the mock-based tests in [`examples/stage-1/05-error-handling/`](../examples/stage-1/05-error-handling/) first, then observe recoverable network errors against the local endpoint.
+- **Path A (Ollama, main practice):** Run the mock-based tests in [`examples/stage-1/05-error-handling/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-1/05-error-handling/) first, then observe recoverable network errors against the local endpoint.
 - **Path B (Anthropic, optional):** Attach Anthropic exception types to the same retry wrapper; invalid keys and overlong contexts must not retry forever.
 - Cover an invalid key, an overlong prompt, and a network interruption. Give exponential backoff a cap and a clear maximum attempt count.
 

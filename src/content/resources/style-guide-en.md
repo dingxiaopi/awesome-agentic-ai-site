@@ -1,5 +1,5 @@
 ---
-title: "`awesome-agentic-ai-zh` Style Guide"
+title: "awesome-agentic-ai-zh Style Guide"
 description: "This is the single source of truth for the catalog: terminology, entry schema, license notation, writing style, banned words."
 section: "Resource"
 sourcePath: "resources/style-guide.en.md"
@@ -9,8 +9,6 @@ language: "en"
 languageLabel: "English"
 baseSlug: "style-guide"
 ---
-> [繁體中文](/zh-tw/resources/style-guide/) | [简体中文](/resources/style-guide/) | **English**
-
 # `awesome-agentic-ai-zh` Style Guide
 
 This is the **single source of truth** for the catalog: terminology, entry schema, license notation, writing style, banned words.
@@ -242,8 +240,6 @@ Every stage (except Stage 0) should have:
 ```markdown
 # Stage N — Topic
 
-> **English** | [繁體中文](/zh-tw/resources/0n-slug/)
-
 [1-2 sentence description of the stage's core question]
 
 ## 📌 Learning Goals
@@ -397,9 +393,7 @@ State only the checked scope and date; do not repeat generic permanence disclaim
 ```markdown
 # For [audience] — Specialized Branch
 
-> **English** | [繁體中文](/zh-tw/resources/for-x/)
-
-> [← Back to main path README](/en) · Branching from end of Stage 7
+> [← Back to main path README](../README.en.md) · Branching from end of Stage 7
 
 ## Use Cases
 - bullet 1
@@ -479,8 +473,8 @@ Keep the quick map, tool-identity table, every term heading, and a one-sentence 
 The identity table must distinguish Provider API, Router, Model Runtime, Coding Agent／Agent Harness, and Agent Framework. Do not copy volatile model, price, context, or fixed token-conversion snapshots into the glossary; link to a freshness-gated chapter or official documentation instead.
 
 ### Internal links
-- Between stages: relative path `[Stage 4](/en/resources/04-agent-frameworks/)`
-- Branch ↔ README: `[← Back to main path](/en)`
+- Between stages: relative path `[Stage 4](04-agent-frameworks.en.md)`
+- Branch ↔ README: `[← Back to main path](../README.en.md)`
 - Cross-stage repo references: full name + link, not just "as cited earlier"
 
 ### External links
@@ -500,8 +494,8 @@ The identity table must distinguish Provider API, Router, Model Runtime, Coding 
 
 This style guide covers "how to write an entry." For **design rationale** — why these 5 branches, why 8 stages — see:
 
-- [`branches/DESIGN.md`](/zh-tw/branches/design/) — Branch design notes (why these audiences, where entries belong) (zh)
-- [`stages/DESIGN.md`](/zh-tw/stages/design/) — Stage design notes (why this structure, how exercises are chosen) (zh)
+- [`branches/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/branches/DESIGN.md) — Branch design notes (why these audiences, where entries belong) (zh)
+- [`stages/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/stages/DESIGN.md) — Stage design notes (why this structure, how exercises are chosen) (zh)
 - [`cli-agents-guide.en.md`](/en/resources/cli-agents-guide/) — Cross-cutting CLI agent comparison
 
 ## Modifying this guide

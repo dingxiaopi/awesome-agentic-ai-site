@@ -13,8 +13,6 @@ baseSlug: "advanced-rag"
 
 **RAG** (Retrieval-Augmented Generation): retrieve relevant material, then answer using it.
 
-[繁體中文](/zh-tw/resources/advanced-rag/) | [English](/en/resources/advanced-rag/) | [简体中文](/resources/advanced-rag/)
-
 <!-- freshness: canonical=resources/advanced-rag.md; verified_on=2026-08-30; scope=rag,retrieval,reranking,graph-rag,evaluation,project-status; max_age_days=90 -->
 
 ← [Back to Stage 6: RAG and Memory](/en/stages/06-memory-rag/)

@@ -12,8 +12,6 @@ order: 2
 ---
 # Stage 2 — Prompt 设计（Prompt Engineering）
 
-> [繁體中文](/zh-tw/stages/02-prompt-engineering/) | **简体中文** | [English](/en/stages/02-prompt-engineering/)
-
 这一关只学三件事：**说清楚、给例子、检查答案**。
 
 **Prompt（提示）** 不只是一个问题。它是交给模型的一整份任务包，可以放进指令、要处理的资料、范例和输出规则。
@@ -231,7 +229,7 @@ Path A 六题两轮的 API 费用为 `$0`。Path B 先设 `$0.05` 上限；如�
 
 最小成果只有三个文件：`prompt.txt`、`cases.json` 和 `results.md`。能重复测试，比一次拿到漂亮答案更重要。
 
-> ▶️ 想直接运行？查看 [`examples/stage-2/01-prompt-eval-loop/`](/)。
+> ▶️ 想直接运行？查看 [`examples/stage-2/01-prompt-eval-loop/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-2/01-prompt-eval-loop/README.zh-Hans.md)。
 
 <details markdown="1">
 <summary>展开其他选修练习和安全提醒</summary>

@@ -11,8 +11,6 @@ baseSlug: "glossary"
 ---
 # Glossary
 
-> [繁體中文](/zh-tw/resources/glossary/) | [简体中文](/resources/glossary/) | **English**
-
 When an unfamiliar term appears, you do not need to stop reading the whole chapter. Find one plain-language explanation here, then return to the Stage you were working on.
 
 ## ⚡ Start with these 12 terms

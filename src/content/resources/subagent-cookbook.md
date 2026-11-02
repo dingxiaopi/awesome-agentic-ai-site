@@ -11,8 +11,6 @@ baseSlug: "subagent-cookbook"
 ---
 # Subagent Cookbook — 15 個複製貼上就能用的派遣 recipe
 
-> **繁體中文** | [简体中文](/resources/subagent-cookbook/) | [English](/en/resources/subagent-cookbook/)
-
 > 📋 **這是什麼**：[Stage 5.5](/zh-tw/stages/05-claude-code-ecosystem/#55--subagentsclaude-code-原生-multi-agent-機制-2025-新功能) 教你 subagent 是什麼概念、這份 cookbook 教你**今天就能用**——15 個情境、每個含「該用哪個 subagent + 完整 prompt 範本（複製即可用）+ 何時不用」。
 >
 > ⚠️ **第一次看？先讀 Stage 5.5 的「可派遣的 subagent 有哪些」+「decision table」兩節**——理解「什麼是 subagent」「Claude Code 內建有哪些」之後再來查 recipe。

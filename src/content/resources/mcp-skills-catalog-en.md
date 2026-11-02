@@ -11,8 +11,6 @@ baseSlug: "mcp-skills-catalog"
 ---
 # MCP / Skills Integration Catalog
 
-> [繁體中文](/zh-tw/resources/mcp-skills-catalog/) | [简体中文](/resources/mcp-skills-catalog/) | **English**
-
 > This is a task-based catalog for finding tools when needed, not an install list. Start with an official entry point; expand a category only when the work calls for it.
 
 ## 📌 How to use this catalog
@@ -1506,7 +1504,7 @@ If your integration isn't above, check these catalogs first:
 2. Or open a PR with its source, license or service status, editorial rating, purpose, audience, permissions, and limits.
 3. Explain which learning gap it fills; popularity numbers alone do not prove quality or safety.
 
-Read [`resources/style-guide.en.md`](/en/resources/style-guide/) and [`CONTRIBUTING.en.md`](../CONTRIBUTING.en.md) before submitting.
+Read [`resources/style-guide.en.md`](/en/resources/style-guide/) and [`CONTRIBUTING.en.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.en.md) before submitting.
 
 ---
 

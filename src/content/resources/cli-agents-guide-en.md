@@ -9,8 +9,6 @@ language: "en"
 languageLabel: "English"
 baseSlug: "cli-agents-guide"
 ---
-> [繁體中文](/zh-tw/resources/cli-agents-guide/) | [简体中文](/resources/cli-agents-guide/) | **English**
-
 # CLI Agents Reference Guide
 
 > [← Back to the main path README](/en) · [A1: Safely run your first small task](/en/tracks/cli-a1-cli-intro/)

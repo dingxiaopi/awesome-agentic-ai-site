@@ -12,8 +12,6 @@ order: 7
 ---
 # Stage 7 — Agent Production Engineering: Testable, Observable, Stoppable, and Recoverable
 
-> [繁體中文](/zh-tw/stages/07-multi-agent-production/) | [简体中文](/stages/07-multi-agent-production/) | **English**
-
 <!-- freshness: canonical=stages/07-multi-agent-production.md; verified_on=2026-09-13; scope=evals,observability,human-approval,persistence,recovery,orchestration,resources; max_age_days=90 -->
 
 Make an AI helper testable, observable, stoppable, and recoverable before sharing it.
@@ -393,13 +391,13 @@ python test.py
 
 **Result:** two Agents make independent cases and a third Agent judges them with a rule. Do this only after a single-Agent baseline has an Eval and the roles truly need to be separate.
 
-[Open the Multi-Agent example](/en)
+[Open the Multi-Agent example](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/01-multi-agent-debate/README.en.md)
 
 ### Option B: Streaming and Prompt caching
 
 **Result:** compare streaming and prompt caching; measure the cost effect yourself. Cache is not a safety or recovery mechanism.
 
-[Open the advanced SDK example](/en)
+[Open the advanced SDK example](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/04-sdk-advanced/README.en.md)
 
 <details markdown="1">
 <summary>🧪 Expand: direct test commands for both options</summary>

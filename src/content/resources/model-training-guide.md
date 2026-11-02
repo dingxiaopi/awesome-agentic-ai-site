@@ -11,8 +11,6 @@ baseSlug: "model-training-guide"
 ---
 # 模型訓練與調整選修指南
 
-> **繁體中文** | [简体中文](/resources/model-training-guide/) | [English](/en/resources/model-training-guide/)
-
 > [← 回到 Stage 1](/zh-tw/stages/01-llm-basics/)
 
 這是一張選路卡，不是訓練課。你只要看懂「哪一種方法會改模型，哪一種只是幫模型做事」。初學者可以先讀完表格，再回 Stage 1 呼叫現成模型。

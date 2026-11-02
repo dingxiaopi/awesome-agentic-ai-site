@@ -23,6 +23,8 @@ const LANG_META = {
 };
 const COLLECTION_KEYS = new Set(['stages', 'branches', 'walkthroughs', 'resources', 'tracks']);
 const README_BASENAME_RE = /^readme(?:\.[a-z0-9_-]+)?\.md$/i;
+// 上游写给维护者的文档（设计笔记、配图生成提示词），不作为学习页面发布
+const MAINTAINER_DOC_RE = /(^|\/)(DESIGN\.md|diagrams\/)/;
 const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'awesome-agentic-ai-site-'));
 const repoDir = path.join(tempDir, 'repo');
 
@@ -98,9 +100,11 @@ const buildLangPath = (language, pathName) => {
   return prefix ? `${prefix}${normalized === '/' ? '' : normalized}` : normalized;
 };
 
+// 标题用于导航和页面 <title>：去掉 Markdown 反引号和开头的 emoji
 const firstHeading = (content) => {
   const match = content.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : null;
+  if (!match) return null;
+  return match[1].replace(/`/g, '').replace(/^[\p{Extended_Pictographic}\uFE0F\u200D\s]+/u, '').trim() || null;
 };
 
 const stripMarkdown = (value) => value
@@ -146,30 +150,66 @@ const normalizeCodeFences = (content) => content
   .replace(/^```hgignore\s*$/gim, '```plaintext')
   .replace(/^```npmignore\s*$/gim, '```plaintext');
 
+// 上游每篇开头都有一行“繁體中文 | English | 简体中文”，站点页头已有语言切换，去掉避免重复
+const LANGUAGE_SWITCH_LINE_RE = /^(?:>\s*)?(?:🌐\s*)?(?:(?:\*\*|\[)(?:繁體中文|繁体中文|简体中文|English)(?:\*\*|\]\([^)]*\))\s*\|?\s*){2,}\n/gm;
+const LANGUAGE_SWITCH_HTML_RE = /^[ \t]*(?:(?:<a\s[^>]*>|<strong>|<b>)(?:繁體中文|简体中文|English)(?:<\/a>|<\/strong>|<\/b>)\s*\|?\s*){2,}\n/gm;
+const stripLanguageSwitch = (content) => content.replace(LANGUAGE_SWITCH_LINE_RE, '').replace(LANGUAGE_SWITCH_HTML_RE, '');
+
+// 站内有对应页面的 .md 链接改成站内路由；其余相对链接（examples/、CONTRIBUTING.md 等网站上没有的文件）指向上游 GitHub
+const toUpstreamUrl = (normalized) => {
+  const kind = normalized.endsWith('/') || !path.posix.extname(normalized) ? 'tree' : 'blob';
+  return `${REPO_WEB_URL}/${kind}/${REPO_REF}/${normalized}`;
+};
+
+const resolveRelativeLink = (rawTarget, currentRelativeDir, language) => {
+  if (/^([a-z][a-z0-9+.-]*:|#|\/)/i.test(rawTarget)) return null;
+  const [targetPath, hash = ''] = rawTarget.split('#');
+  if (!targetPath) return null;
+  const normalized = path.posix.normalize(path.posix.join(currentRelativeDir, targetPath));
+  if (normalized.startsWith('..')) return null;
+  const route = /\.md$/i.test(normalized) && !MAINTAINER_DOC_RE.test(normalized) ? resolveMarkdownRoute(normalized, language) : null;
+  return `${route ?? toUpstreamUrl(normalized)}${hash ? `#${hash}` : ''}`;
+};
+
+// 只改正文里的链接：代码块和行内代码原样保留（里面常有 [name](**args) 这类看起来像链接的代码）
+const FENCED_CODE_RE = /(^(```|~~~)[^\n]*\n[\s\S]*?^\2[^\n]*$)/m;
+const INLINE_TOKEN_RE = /`[^`\n]+`|!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]+)\]\(([^)\s]+)\)|(<a\s[^>]*?href=")([^"]+)(")/g;
+
 const rewriteLinks = (content, currentRelativeDir, language) => {
-  return content
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (full, alt, rawTarget) => {
-      if (/^(https?:|data:|#)/.test(rawTarget)) return full;
-      const normalized = path.posix.normalize(path.posix.join(currentRelativeDir, rawTarget));
+  const rewriteSegment = (segment) => segment.replace(INLINE_TOKEN_RE, (full, alt, imgTarget, text, linkTarget, aBefore, aTarget, aAfter) => {
+    if (imgTarget !== undefined) {
+      if (/^(https?:|data:|#)/.test(imgTarget)) return full;
+      const normalized = path.posix.normalize(path.posix.join(currentRelativeDir, imgTarget));
       return `![${alt}](/upstream/${normalized})`;
-    })
-    .replace(/\[([^\]]+)\]\(([^)]+\.md(?:#[^)]+)?)\)/g, (full, text, rawTarget) => {
-      if (/^https?:/i.test(rawTarget)) return full;
-      const [targetPath, hash = ''] = rawTarget.split('#');
-      const normalized = path.posix.normalize(path.posix.join(currentRelativeDir, targetPath));
-      const route = resolveMarkdownRoute(normalized, language);
-      if (!route) return full;
-      return `[${text}](${route}${hash ? `#${hash}` : ''})`;
-    });
+    }
+    if (linkTarget !== undefined) {
+      const resolved = resolveRelativeLink(linkTarget, currentRelativeDir, language);
+      return resolved ? `[${text}](${resolved})` : full;
+    }
+    if (aTarget !== undefined) {
+      const resolved = resolveRelativeLink(aTarget, currentRelativeDir, language);
+      return resolved ? `${aBefore}${resolved}${aAfter}` : full;
+    }
+    return full;
+  });
+
+  let output = '';
+  let rest = content;
+  let match;
+  while ((match = FENCED_CODE_RE.exec(rest))) {
+    output += rewriteSegment(rest.slice(0, match.index)) + match[0];
+    rest = rest.slice(match.index + match[0].length);
+  }
+  return output + rewriteSegment(rest);
 };
 
 const resolveMarkdownRoute = (normalized, currentLanguage) => {
   const clean = normalized.replace(/^\.\//, '').replace(/^\//, '');
-  const basename = path.posix.basename(clean);
-  if (README_BASENAME_RE.test(basename)) {
+  const parts = clean.split('/');
+  // 仓库根目录的 README 对应网站首页；各栏目目录里的 README 是普通页面
+  if (parts.length === 1 && README_BASENAME_RE.test(clean)) {
     return buildLangPath(currentLanguage, '/');
   }
-  const parts = clean.split('/');
   const collection = parts[0];
   if (!COLLECTION_KEYS.has(collection)) return null;
   const { language } = parseLanguage(clean);
@@ -208,9 +248,10 @@ try {
           continue;
         }
         if (!entry.name.endsWith('.md')) continue;
+        if (MAINTAINER_DOC_RE.test(relativePath)) continue;
 
         const raw = await fs.readFile(sourcePath, 'utf8');
-        const normalizedRaw = normalizeCodeFences(raw);
+        const normalizedRaw = stripLanguageSwitch(normalizeCodeFences(raw));
         const { language } = parseLanguage(relativePath);
         const title = firstHeading(normalizedRaw) || entry.name.replace(/\.md$/i, '');
         const description = firstParagraph(normalizedRaw) || `${section.label} 内容页面`;

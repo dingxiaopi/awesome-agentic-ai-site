@@ -12,8 +12,6 @@ order: 2
 ---
 # Stage 2 — Prompt Engineering
 
-> [繁體中文](/zh-tw/stages/02-prompt-engineering/) | [简体中文](/stages/02-prompt-engineering/) | **English**
-
 This stage teaches only three things: **say what you mean, give examples, and check answers**.
 
 **Prompt** is not only one question. It is a complete task package for the model, which can include instructions, **Input Data**, examples, and output rules.
@@ -231,7 +229,7 @@ Connect the three exercises: a four-part prompt, three examples, and six fixed t
 
 The minimum result has only three files: `prompt.txt`, `cases.json`, and `results.md`. Being able to repeat the test matters more than getting one pretty answer.
 
-> ▶️ Want to run it directly? See [`examples/stage-2/01-prompt-eval-loop/`](/en).
+> ▶️ Want to run it directly? See [`examples/stage-2/01-prompt-eval-loop/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-2/01-prompt-eval-loop/README.en.md).
 
 <details markdown="1">
 <summary>Expand optional exercises and safety reminders</summary>

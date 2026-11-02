@@ -11,8 +11,6 @@ baseSlug: "mcp-skills-catalog"
 ---
 # MCP / Skills 整合目錄
 
-> **繁體中文** | [简体中文](/resources/mcp-skills-catalog/) | [English](/en/resources/mcp-skills-catalog/)
-
 > 這是「需要時來找工具」的分類目錄，不是安裝清單。先選一個官方起點；只有工作真的需要時，才展開一類。
 
 ## 📌 怎麼使用這份目錄
@@ -1555,7 +1553,7 @@ npx -y jacobian mcp
 2. 或直接送 PR：在對應分類下加一個 entry，寫清楚來源／授權或服務狀態、推薦度、教什麼、適合誰、權限與限制
 3. 說明它補上哪個教學缺口；只提供 popularity 數字不能證明品質或安全
 
-PR 送出前看一下 [`resources/style-guide.md`](/zh-tw/resources/style-guide/) 跟 [`CONTRIBUTING.md`](../CONTRIBUTING.md)。
+PR 送出前看一下 [`resources/style-guide.md`](/zh-tw/resources/style-guide/) 跟 [`CONTRIBUTING.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.md)。
 
 ---
 

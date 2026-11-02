@@ -14,8 +14,6 @@ order: 1
 
 **CLI**（Command-Line Interface）：用终端机文字指令操作的界面。
 
-> [繁體中文](/zh-tw/tracks/cli-a1-cli-intro/) | **简体中文** | [English](/en/tracks/cli-a1-cli-intro/)
-
 > [← 回主线路 README](/) · **Track A: CLI Power User** 第 1 站 · [下一站：A2](/tracks/cli-a2-cli-workflow/)
 
 这一站会把“终端里的 AI”讲清楚，然后让你在一个可丢弃的 demo repo（由 Git 管理的练习项目文件夹）里安全地跑一次。你会先让工具读文件、找测试指令、提出计划；确认计划后，它才会做一个可以用 `git diff` 看到、也能撤销的小改动。

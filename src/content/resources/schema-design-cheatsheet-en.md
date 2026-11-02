@@ -11,8 +11,6 @@ baseSlug: "schema-design-cheatsheet"
 ---
 # Function Schema Design Cheatsheet
 
-> [繁體中文](/zh-tw/resources/schema-design-cheatsheet/) | [简体中文](/resources/schema-design-cheatsheet/) | **English**
-
 > Companion to [Stage 3 — Tool Use & Your First Agent Loop](/en/stages/03-tool-use-and-hello-agent/). 5 golden rules + 5 common anti-patterns when writing tool / function schemas.
 
 > Specification checked: 2026-08-27 UTC. A schema is an interface shared by the model and program; clarity reduces ambiguity but cannot replace application validation or a fixed eval.

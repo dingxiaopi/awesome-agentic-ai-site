@@ -14,8 +14,6 @@ order: 1
 
 **CLI**（Command-Line Interface）：用終端機文字指令操作的介面。
 
-> **繁體中文** | [简体中文](/tracks/cli-a1-cli-intro/) | [English](/en/tracks/cli-a1-cli-intro/)
-
 > [← 回主路線 README](/zh-tw) · **Track A: CLI Power User** 第 1 站 · [下一站：A2](/zh-tw/tracks/cli-a2-cli-workflow/)
 
 這一站要把「終端機裡的 AI」說清楚，然後在一個可丟棄的 demo repo（由 Git 管理的練習專案資料夾）裡安全地跑一次。你會先讓工具讀檔、找測試指令、提出計畫；確認計畫後，才做一個可用 `git diff` 看見、也能復原的小改動。

@@ -12,8 +12,6 @@ order: 3
 ---
 # Stage 3 — Tool Use & Your First Agent Loop ⭐
 
-🌐 **English** | [繁體中文](/zh-tw/stages/03-tool-use-and-hello-agent/) | [简体中文](/stages/03-tool-use-and-hello-agent/)
-
 This stage does one thing: let the model fill out a “tool work order,” then have your program validate it, execute it, and send the result back. This round trip is your first **Agent Loop**.
 
 <!-- freshness: canonical=stages/03-tool-use-and-hello-agent.md; verified_on=2026-08-27; scope=models,pricing,tool-apis,security; max_age_days=90 -->
@@ -166,7 +164,7 @@ Complete Exercises 1–3 first. Exercises 4–6 make the loop more robust; you d
 
 After finishing, you will see the model first produce a `get_weather` Tool Call, the program execute it, and the model answer using the Tool Result.
 
-If you prefer working from files, open the [complete Exercise 1 folder](/en).
+If you prefer working from files, open the [complete Exercise 1 folder](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/01-function-calling/README.en.md).
 
 **First action**: Copy and run `ollama pull qwen2.5:3b`. Then expand Path A and copy the complete program into `hello_tool.py`.
 
@@ -335,7 +333,7 @@ python examples/stage-3/02-multi-tool-selection/test.py
 <details markdown="1">
 <summary>Expand Path A/Path B, observation points, and budget</summary>
 
-- [Path A README (Ollama)](/en): run `python starter.py`.
+- [Path A README (Ollama)](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/02-multi-tool-selection/README.en.md): run `python starter.py`.
 - The same folder’s `starter_anthropic.py` is Path B; run `python test_anthropic.py` to validate the message shape with a mock first.
 - Observe `tool_calls[0].function.name`, then confirm that the program rejects unknown names.
 - Do not dispatch tools with `globals()[model_name]()` or `eval()`.
@@ -387,7 +385,7 @@ for step in range(MAX_STEPS):
 raise RuntimeError(f"Agent exceeded {MAX_STEPS} steps and stopped")
 ```
 
-The real program must also put the assistant’s Tool Call back into history and handle refusal, max tokens, timeout, unknown tools, JSON parsing, and tool exceptions. The complete two paths are in [`03-react-from-scratch`](/en).
+The real program must also put the assistant’s Tool Call back into history and handle refusal, max tokens, timeout, unknown tools, JSON parsing, and tool exceptions. The complete two paths are in [`03-react-from-scratch`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/03-react-from-scratch/README.en.md).
 
 Record a trace as `action / observation / final` or a short verifiable summary; do not make private Chain-of-Thought a logging contract.
 
@@ -410,7 +408,7 @@ python examples/stage-3/04-multi-step-reasoning/test.py
 
 Example task: “Check Taipei’s temperature, then convert it to Fahrenheit.” Use separate `get_weather` and `celsius_to_fahrenheit` tools. Do not secretly combine the two steps into one fake tool; this exercise observes whether the model continues from the previous result.
 
-The complete two paths are in [`04-multi-step-reasoning`](/en). When comparing models, keep the prompt, tools, schema, `MAX_STEPS`, and test cases fixed; rerun at least five times and record success rates and failure types.
+The complete two paths are in [`04-multi-step-reasoning`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/04-multi-step-reasoning/README.en.md). When comparing models, keep the prompt, tools, schema, `MAX_STEPS`, and test cases fixed; rerun at least five times and record success rates and failure types.
 
 Path A has `$0` in API cost; reserve `$0.10` for multiple Path B requests. A larger model may be more stable, or merely more expensive; use an eval to decide.
 
@@ -444,7 +442,7 @@ python examples/stage-3/05-error-handling/test_anthropic.py
 
 Anthropic’s failed `tool_result` uses `"is_error": true`. On the OpenAI-compatible path, structured errors can go in the `role: tool` content, but the application must still limit retries.
 
-The complete two paths are in [`05-error-handling`](/en). Path A has `$0` in API cost; reserve `$0.10` for one Path B error-recovery round.
+The complete two paths are in [`05-error-handling`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/05-error-handling/README.en.md). Path A has `$0` in API cost; reserve `$0.10` for one Path B error-recovery round.
 
 </details>
 
@@ -468,7 +466,7 @@ python examples/stage-3/06-schema-design/test_anthropic.py
 4. Use `enum`, ranges, and `additionalProperties: false` to constrain inputs explicitly when possible.
 5. The schema owns only the interface; the program still validates permissions, business rules, and data safety.
 
-The complete two paths are in [`06-schema-design`](/en), with a quick reference in [`resources/schema-design-cheatsheet.en.md`](/en/resources/schema-design-cheatsheet/).
+The complete two paths are in [`06-schema-design`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/06-schema-design/README.en.md), with a quick reference in [`resources/schema-design-cheatsheet.en.md`](/en/resources/schema-design-cheatsheet/).
 
 Copy this result card directly; you do not need to draw a blank table first:
 

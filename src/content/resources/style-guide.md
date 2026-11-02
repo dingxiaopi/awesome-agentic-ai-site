@@ -1,5 +1,5 @@
 ---
-title: "`awesome-agentic-ai-zh` 風格指南"
+title: "awesome-agentic-ai-zh 風格指南"
 description: "這份指南是這份 catalog 的單一真實來源——術語、entry 結構、license 標註、寫作風格、禁用詞，全部以這份文件為準。"
 section: "Resource"
 sourcePath: "resources/style-guide.md"
@@ -9,8 +9,6 @@ language: "zh-tw"
 languageLabel: "繁體中文"
 baseSlug: "style-guide"
 ---
-> **繁體中文** | [简体中文](/resources/style-guide/) | [English](/en/resources/style-guide/)
-
 # `awesome-agentic-ai-zh` 風格指南
 
 這份指南是這份 catalog 的**單一真實來源**——術語、entry 結構、license 標註、寫作風格、禁用詞，全部以這份文件為準。
@@ -239,8 +237,6 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 ```markdown
 # Stage N — 主題
 
-> [English](/en/resources/0n-slug/) | **繁體中文**
-
 [1-2 句話描述這個 stage 的核心問題]
 
 ## 📌 學習目標
@@ -395,9 +391,7 @@ PR 之前請先讀完本文。專案維護者也會用這份指南做 review。
 ```markdown
 # 給 [audience] — 專業分支
 
-> [English](/en/resources/for-x/) | **繁體中文**
-
-> [← 回主路線 README](/zh-tw) · 從 Stage 7 結尾分支出來
+> [← 回主路線 README](../README.md) · 從 Stage 7 結尾分支出來
 
 ## 使用情境
 - bullet 1
@@ -482,8 +476,8 @@ Glossary 的快速地圖、工具身分表、每個詞的 heading 與一句白�
 工具身分表要直接分清 Provider API、Router、Model Runtime、Coding Agent／Agent Harness 與 Agent Framework。型號、價格、context、固定 token 換算等易變快照不要複製到 Glossary；改連到有 freshness gate 的章節或官方文件。
 
 ### 內部連結
-- Stage 之間：相對路徑 `[Stage 4](/zh-tw/resources/04-agent-frameworks/)`
-- Branch ↔ README：`[← 回主路線](/zh-tw)`
+- Stage 之間：相對路徑 `[Stage 4](04-agent-frameworks.md)`
+- Branch ↔ README：`[← 回主路線](../README.md)`
 - 跨 stage 引用同一 repo：用全名 + 連結，不要只寫「之前提過」
 
 ### 外部連結
@@ -503,8 +497,8 @@ Glossary 的快速地圖、工具身分表、每個詞的 heading 與一句白�
 
 這份 style-guide 講「entry 怎麼寫」。為什麼分這 5 個 branch、為什麼是 8 個 stage 這類**設計理由**，見：
 
-- [`branches/DESIGN.md`](/zh-tw/branches/design/)——branch 設計筆記（為什麼這樣切、entry 該放哪）
-- [`stages/DESIGN.md`](/zh-tw/stages/design/)——stage 設計筆記（為什麼這結構、動手練習 怎麼挑）
+- [`branches/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/branches/DESIGN.md)——branch 設計筆記（為什麼這樣切、entry 該放哪）
+- [`stages/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/stages/DESIGN.md)——stage 設計筆記（為什麼這結構、動手練習 怎麼挑）
 - [`cli-agents-guide.md`](/zh-tw/resources/cli-agents-guide/)——cross-cutting CLI agent 比較指南
 
 ## 修改本指南

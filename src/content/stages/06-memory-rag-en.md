@@ -14,8 +14,6 @@ order: 6
 
 **RAG** (Retrieval-Augmented Generation): retrieve relevant material, then answer using it.
 
-> [繁體中文](/zh-tw/stages/06-memory-rag/) | [简体中文](/stages/06-memory-rag/) | **English**
-
 <!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-30; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
 
 Models do not know everything. **RAG** asks a model to consult a book before it answers; **Memory** gives it a notebook for things it will need next time. This stage separates the two and then builds both step by step.
@@ -115,7 +113,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[Open setup, checks, and optional Path B](/en). Start with only a few sentences to avoid unnecessary API costs.
+[Open setup, checks, and optional Path B](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/01-embeddings/README.en.md). Start with only a few sentences to avoid unnecessary API costs.
 
 <a id="exercise-2-vector-db"></a>
 ### Exercise 2: Put embeddings in a vector database
@@ -128,7 +126,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[Open setup, checks, and optional Path B](/en). Exercise data must not contain secrets or personal information.
+[Open setup, checks, and optional Path B](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/02-vector-db/README.en.md). Exercise data must not contain secrets or personal information.
 
 <a id="exercise-3-chunking-comparison"></a>
 ### Exercise 3: Compare three chunking methods
@@ -141,7 +139,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[Open setup, checks, and optional Path B](/en). Do not memorize a “standard size”; begin with document structure and test results.
+[Open setup, checks, and optional Path B](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/03-chunking-comparison/README.en.md). Do not memorize a “standard size”; begin with document structure and test results.
 
 <a id="exercise-4-full-rag-pipeline"></a>
 ### Exercise 4: Connect a complete RAG pipeline
@@ -154,7 +152,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[Open setup, checks, and optional Path B](/en). Start with a small dataset; “the program runs” does not mean the answer is correct.
+[Open setup, checks, and optional Path B](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/04-full-rag-pipeline/README.en.md). Start with a small dataset; “the program runs” does not mean the answer is correct.
 
 <a id="exercise-5-long-term-memory"></a>
 ### Exercise 5: Remember a preference
@@ -167,7 +165,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[Open setup, checks, and optional Path B](/en). Save only data needed to finish a task and provide ways to view, change, and delete it.
+[Open setup, checks, and optional Path B](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/05-long-term-memory/README.en.md). Save only data needed to finish a task and provide ways to view, change, and delete it.
 
 ### Recommended mini-project: an assistant that retrieves and remembers
 

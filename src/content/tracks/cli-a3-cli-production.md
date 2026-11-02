@@ -12,8 +12,6 @@ order: 3
 ---
 # A3 — 把 CLI agent 接進安全的團隊流程
 
-> **繁體中文** | [简体中文](/tracks/cli-a3-cli-production/) | [English](/en/tracks/cli-a3-cli-production/)
-
 > [← Stage 5 — Track A 核心](/zh-tw/stages/05-claude-code-ecosystem/#-進入條件與閱讀路線) · **Track A: CLI Power User** 第 3 站（核心最後一站）
 
 這一站只做一件事：**讓 CLI agent 在測試用 PR 做一個只讀檢查。它可以提出意見，但不能自己合併、部署或取得多餘權限。**

@@ -12,8 +12,6 @@ order: 0
 ---
 # Stage 0 — 基礎準備（Foundations）
 
-> **繁體中文** | [简体中文](/stages/00-foundations/) | [English](/en/stages/00-foundations/)
-
 這一關先檢查：你會不會使用後面一定會用到的四種工具？會就直接跳過。不會也沒關係，照著下面的小練習做一次。
 
 ## 何時可以跳過這個階段

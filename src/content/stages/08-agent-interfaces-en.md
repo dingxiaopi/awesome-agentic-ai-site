@@ -12,8 +12,6 @@ order: 8
 ---
 # Stage 8 — Agent Interfaces: Browser Use · Computer Use · Sandbox
 
-> [繁體中文](/zh-tw/stages/08-agent-interfaces/) | [简体中文](/stages/08-agent-interfaces/) | **English**
-
 Earlier stages teach an agent what to think about and which tool to request. This stage teaches a different question: **which door should it use to do the work?** A larger door reaches more things and creates more risk. Start with the smallest door whose result you can check.
 
 <a id="-what-are-agent-interfaces-positioning"></a>

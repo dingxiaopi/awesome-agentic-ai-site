@@ -12,8 +12,6 @@ order: 4
 ---
 # Stage 4 — Workflow Graph 與 Agent 框架
 
-> **繁體中文** | [简体中文](/stages/04-agent-frameworks/) | [English](/en/stages/04-agent-frameworks/)
-
 你在 Stage 3 已經自己寫過 **Agent Loop**。這一關先把多步工作畫成 **Workflow Graph**，再選 **Framework（框架）** 來幫你接線。先看懂工作地圖，再選工具箱，才不會因為某個框架很流行就硬把事情變複雜。
 
 <!-- freshness: canonical=stages/04-agent-frameworks.md; verified_on=2026-08-27; scope=frameworks,releases,maintenance,licenses,security; max_age_days=90 -->
@@ -259,11 +257,11 @@ py -3.11 test.py
 
 每個資料夾都有三語 README、`starter.py`、`starter_anthropic.py`、`test.py` 與 `test_anthropic.py`。先安裝 requirements、再跑 mock test；成功後才照 README 啟動真實模型：
 
-1. [練習 1 README](/zh-tw)
-2. [練習 2 README](/zh-tw)
-3. [練習 3 README](/zh-tw)
-4. [練習 4 README](/zh-tw)
-5. [練習 5 README](/zh-tw)
+1. [練習 1 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/01-same-agent-two-frameworks/README.md)
+2. [練習 2 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/02-multi-agent-roles/README.md)
+3. [練習 3 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/03-graph-workflow/README.md)
+4. [練習 4 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/04-codeact-vs-json-tool/README.md)
+5. [練習 5 README](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-4/05-typed-agent/README.md)
 
 如果 `py -3.11` 找不到 Python，先跑 `py -0p` 看已安裝版本。不要在 Python 3.14 強裝 CrewAI 1.15.18；建立 Python 3.11 virtual environment。
 

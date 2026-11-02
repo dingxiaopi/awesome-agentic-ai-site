@@ -12,8 +12,6 @@ order: 2
 ---
 # A2 — 让 CLI agent 每次都按同一套方法做事
 
-> [繁體中文](/zh-tw/tracks/cli-a2-cli-workflow/) | **简体中文** | [English](/en/tracks/cli-a2-cli-workflow/)
-
 > [← A1 — 安全完成第一个 CLI 任务](/tracks/cli-a1-cli-intro/) · **Track A: CLI Power User** 第 2 站 · [下一站：Stage 5 的 Track A 核心](/stages/05-claude-code-ecosystem/#-进入条件与阅读路径)
 
 这一站只解决一个问题：**怎么让 CLI agent 下次进入同一个 repo 时，还记得同一套做事方法？**

@@ -11,8 +11,6 @@ baseSlug: "for-developer"
 ---
 # Extension Path: For Developers
 
-> [繁體中文](/zh-tw/branches/for-developer/) | [简体中文](/branches/for-developer/) | **English**
-
 [← Back to the main route](/en)
 
 <!-- freshness: canonical=branches/for-developer.md; verified_on=2026-08-29; scope=coding-agents,tool-identity,permissions,sandboxing,project-status; max_age_days=90 -->

@@ -12,8 +12,6 @@ order: 0
 ---
 # Stage 0 — Foundations
 
-> [繁體中文](/zh-tw/stages/00-foundations/) | **English** | [简体中文](/stages/00-foundations/)
-
 This stage checks four tools that you will use later. If you already know them, skip ahead. If not, try the practice below once.
 
 ## When to skip this stage

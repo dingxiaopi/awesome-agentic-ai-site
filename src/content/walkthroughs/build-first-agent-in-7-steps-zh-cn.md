@@ -9,8 +9,6 @@ language: "zh-cn"
 languageLabel: "简体中文"
 baseSlug: "build-first-agent-in-7-steps"
 ---
-> [繁體中文](/zh-tw/walkthroughs/build-first-agent-in-7-steps/) | **简体中文** | [English](/en/walkthroughs/build-first-agent-in-7-steps/)
-
 <!-- freshness: canonical=walkthroughs/build-first-agent-in-7-steps.md; verified_on=2026-09-13; scope=models,frameworks,evals,observability,human-approval,interfaces; max_age_days=90 -->
 
 # 7 步打造你的第一个 AI Agent
@@ -846,7 +844,7 @@ Paper Summary Bot 读取公开论文时不必每一步都问人；但要“公�
 3. resume 时先重新验证 checkpoint、schema 与 ledger。ledger 已有同一个 key，就补完成状态，不重做副作用。
 4. reject 只能取消尚未执行的动作；若 receipt／ledger 证明已执行，必须进入 recovery，不能把它假装成 `cancelled`。
 
-直接运行 [Stage 7 Safe Execution 示例](/)；它不联网、不用模型，会把 crash、late reject、ledger 冲突与最多执行一次都测试给你看。
+直接运行 [Stage 7 Safe Execution 示例](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/06-safe-execution/README.zh-Hans.md)；它不联网、不用模型，会把 crash、late reject、ledger 冲突与最多执行一次都测试给你看。
 
 ### 7.4 Deploy（Docker + FastAPI）
 

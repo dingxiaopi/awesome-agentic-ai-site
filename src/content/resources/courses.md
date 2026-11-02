@@ -11,8 +11,6 @@ baseSlug: "courses"
 ---
 # AI Agent 課程地圖：先學會，再決定要不要拿證書
 
-> **繁體中文** | [简体中文](/resources/courses/) | [English](/en/resources/courses/)
-
 <!-- freshness: canonical=resources/courses.md; verified_on=2026-08-29; scope=course-availability,cost,certificate,assessment,repository-status; max_age_days=90 -->
 
 這一頁幫你做一件事：**從很多課裡，挑一門真的適合現在的你。** 不必先蒐集證書，也不必一次報名五門。先選一門、做出一個可以展示的作品，再走下一步。

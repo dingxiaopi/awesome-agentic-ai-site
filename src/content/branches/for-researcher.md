@@ -11,8 +11,6 @@ baseSlug: "for-researcher"
 ---
 # 研究人員延伸路線（For Researchers）
 
-> **繁體中文** | [简体中文](/branches/for-researcher/) | [English](/en/branches/for-researcher/)
-
 [← 回主路線](/zh-tw)
 
 <!-- freshness: canonical=branches/for-researcher.md; verified_on=2026-08-29; scope=research-tools,citations,privacy,reproducibility,project-status; max_age_days=90 -->

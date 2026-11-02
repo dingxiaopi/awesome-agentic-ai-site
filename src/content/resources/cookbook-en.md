@@ -11,8 +11,6 @@ baseSlug: "cookbook"
 ---
 # Cookbook — Turn concepts into real results
 
-> [繁體中文](/zh-tw/resources/cookbook/) | [简体中文](/resources/cookbook/) | **English**
-
 <!-- freshness: canonical=resources/cookbook.md; verified_on=2026-08-30; scope=skills,mcp,documents,gemini-notebook,zotero,local-runtime,cli-tools; max_age_days=90 -->
 
 You do not need to read this Cookbook in one sitting. Pick one result you want, copy its first action, and open the details only when you need the remaining steps.

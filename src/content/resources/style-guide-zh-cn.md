@@ -1,5 +1,5 @@
 ---
-title: "`awesome-agentic-ai-zh` 风格指南"
+title: "awesome-agentic-ai-zh 风格指南"
 description: "这份指南是这份 catalog 的单一真实来源——术语、entry 结构、license 标注、写作风格、禁用词，全部以这份文件为准。"
 section: "Resource"
 sourcePath: "resources/style-guide.zh-Hans.md"
@@ -9,8 +9,6 @@ language: "zh-cn"
 languageLabel: "简体中文"
 baseSlug: "style-guide"
 ---
-> [繁體中文](/zh-tw/resources/style-guide/) | **简体中文** | [English](/en/resources/style-guide/)
-
 # `awesome-agentic-ai-zh` 风格指南
 
 这份指南是这份 catalog 的**单一真实来源**——术语、entry 结构、license 标注、写作风格、禁用词，全部以这份文件为准。
@@ -242,8 +240,6 @@ PR 之前请先读完本文。项目维护者也会用这份指南做 review。
 ```markdown
 # Stage N — 主题
 
-> [English](/en/resources/0n-slug/) | **简体中文**
-
 [1-2 句话描述这个 stage 的核心问题]
 
 ## 📌 学习目标
@@ -398,9 +394,7 @@ PR 之前请先读完本文。项目维护者也会用这份指南做 review。
 ```markdown
 # 给 [audience] — 专业分支
 
-> [English](/en/resources/for-x/) | **简体中文**
-
-> [← 回主路线 README](/) · 从 Stage 7 结尾分支出来
+> [← 回主路线 README](../README.md) · 从 Stage 7 结尾分支出来
 
 ## 使用情境
 - bullet 1
@@ -485,8 +479,8 @@ Glossary 的快速地图、工具身份表、每个词的 heading 和一句白�
 工具身份表必须分清 Provider API、Router、Model Runtime、Coding Agent／Agent Harness 与 Agent Framework。不要把容易变化的型号、价格、context 或固定 token 换算复制进 Glossary；改为链接有 freshness gate 的章节或官方文档。
 
 ### 内部链接
-- Stage 之间：相对路径 `[Stage 4](/resources/04-agent-frameworks/)`
-- Branch ↔ README：`[← 回主路线](/)`
+- Stage 之间：相对路径 `[Stage 4](./04-agent-frameworks.zh-Hans.md)`
+- Branch ↔ README：`[← 回主路线](../README.zh-Hans.md)`
 - 跨 stage 引用同一 repo：用全名 + 链接，不要只写“之前提过”
 
 ### 外部链接
@@ -506,8 +500,8 @@ Glossary 的快速地图、工具身份表、每个词的 heading 和一句白�
 
 这份 style-guide 讲“entry 怎么写”。为什么分这 5 个 branch、为什么是 8 个 stage 这类**设计理由**，见：
 
-- [`branches/DESIGN.md`](/zh-tw/branches/design/)—branch 设计笔记（为什么这样切、entry 该放哪）
-- [`stages/DESIGN.md`](/zh-tw/stages/design/)—stage 设计笔记（为什么这结构、动手练习 怎么挑）
+- [`branches/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/branches/DESIGN.md)—branch 设计笔记（为什么这样切、entry 该放哪）
+- [`stages/DESIGN.md`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/stages/DESIGN.md)—stage 设计笔记（为什么这结构、动手练习 怎么挑）
 - [`cli-agents-guide.zh-Hans.md`](/resources/cli-agents-guide/)—cross-cutting CLI agent 比较指南
 
 ## 修改本指南

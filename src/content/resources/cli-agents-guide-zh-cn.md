@@ -9,8 +9,6 @@ language: "zh-cn"
 languageLabel: "简体中文"
 baseSlug: "cli-agents-guide"
 ---
-> [繁體中文](/zh-tw/resources/cli-agents-guide/) | **简体中文** | [English](/en/resources/cli-agents-guide/)
-
 # CLI Agents 参考指南
 
 > [← 回主线路 README](/) · [A1：安全地跑第一个小任务](/tracks/cli-a1-cli-intro/)

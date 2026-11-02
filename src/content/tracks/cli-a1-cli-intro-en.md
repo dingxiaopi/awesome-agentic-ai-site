@@ -14,8 +14,6 @@ order: 1
 
 **CLI** (Command-Line Interface): an interface operated by typed terminal commands.
 
-> [繁體中文](/zh-tw/tracks/cli-a1-cli-intro/) | [简体中文](/tracks/cli-a1-cli-intro/) | **English**
-
 > [← Back to the main path README](/en) · **Track A: CLI Power User** — Stop 1 · [Next: A2](/en/tracks/cli-a2-cli-workflow/)
 
 This stop explains what “AI in the terminal” means, then has you run it once in a disposable demo repo (a Git-managed practice project folder). You will first have the tool read files, find the test command, and propose a plan; only after you confirm the plan will it make a small change that you can inspect with `git diff` and undo.

@@ -11,8 +11,6 @@ baseSlug: "for-everyday-users"
 ---
 # 日常用户延伸路线（For Everyday Users）
 
-> [繁體中文](/zh-tw/branches/for-everyday-users/) | **简体中文** | [English](/en/branches/for-everyday-users/)
-
 > [← 回到主路线](/) · 你不必先学会写程序，也不必走完整条主线。
 
 <!-- freshness: canonical=branches/for-everyday-users.md; verified_on=2026-08-29; scope=chat-apps,connectors,cli-agents,local-runtimes,privacy,project-status; max_age_days=90 -->
@@ -255,4 +253,4 @@ CLI Agent 的安全起手式：
 - 想把 Prompt 写得更清楚：进入 [Stage 2](/stages/02-prompt-engineering/)。
 - 想安全使用 CLI Agent：进入 [Track A1](/tracks/cli-a1-cli-intro/)。
 - 想分清 App、Connector、MCP 与自动化：进入 [知识工作者路线](/branches/for-knowledge-worker/)。
-- 想协助改善这条路：阅读 [CONTRIBUTING.zh-Hans.md](../CONTRIBUTING.zh-Hans.md)。
+- 想协助改善这条路：阅读 [CONTRIBUTING.zh-Hans.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.zh-Hans.md)。

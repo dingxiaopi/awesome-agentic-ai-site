@@ -11,8 +11,6 @@ baseSlug: "for-knowledge-worker"
 ---
 # Extension Path: For Knowledge Workers
 
-> [繁體中文](/zh-tw/branches/for-knowledge-worker/) | [简体中文](/branches/for-knowledge-worker/) | **English**
-
 <!-- freshness: canonical=branches/for-knowledge-worker.md; verified_on=2026-08-29; scope=apps,connectors,mcp,workflow-automation,permissions,project-status; max_age_days=90 -->
 
 > [← Back to the main route](/en) · Continue after **Track A A3** or **Track B Stage 7**. No development background is required: start with one-off tasks and connect tools only when work repeats.

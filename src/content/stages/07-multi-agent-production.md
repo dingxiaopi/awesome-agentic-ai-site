@@ -12,8 +12,6 @@ order: 7
 ---
 # Stage 7 — Agent 上線工程：可測、可看、可停、可恢復
 
-> **繁體中文** | [简体中文](/stages/07-multi-agent-production/) | [English](/en/stages/07-multi-agent-production/)
-
 <!-- freshness: canonical=stages/07-multi-agent-production.md; verified_on=2026-09-13; scope=evals,observability,human-approval,persistence,recovery,orchestration,resources; max_age_days=90 -->
 
 先讓 AI 幫手可測、可看、可停、可恢復，再交給別人使用。
@@ -397,13 +395,13 @@ python test.py
 
 **成果：** 兩個 Agent 分別提出正反意見，第三個 Agent 依規則裁決。只有單一 Agent baseline 已有 Eval，且角色真的需要分開時再做。
 
-[打開 Multi-Agent 範例](/zh-tw)
+[打開 Multi-Agent 範例](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/01-multi-agent-debate/README.md)
 
 ### 選修 B：Streaming 與 Prompt caching
 
 **成果：** 比較 streaming 與 prompt caching 的行為；成本效果必須自己量，不把 cache 當成安全或復原機制。
 
-[打開 SDK 進階範例](/zh-tw)
+[打開 SDK 進階範例](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/04-sdk-advanced/README.md)
 
 <details markdown="1">
 <summary>🧪 展開：兩個選修的直接測試命令</summary>

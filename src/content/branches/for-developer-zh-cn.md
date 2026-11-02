@@ -11,8 +11,6 @@ baseSlug: "for-developer"
 ---
 # 开发者延伸路线（For Developers）
 
-> [繁體中文](/zh-tw/branches/for-developer/) | **简体中文** | [English](/en/branches/for-developer/)
-
 [← 回到主路线](/)
 
 <!-- freshness: canonical=branches/for-developer.md; verified_on=2026-08-29; scope=coding-agents,tool-identity,permissions,sandboxing,project-status; max_age_days=90 -->

@@ -11,8 +11,6 @@ baseSlug: "glossary"
 ---
 # 术语小词典（Glossary）
 
-> [繁體中文](/zh-tw/resources/glossary/) | **简体中文** | [English](/en/resources/glossary/)
-
 看到陌生英文时，不用停下整章。先在这里找到一句白话解释，再回原来的 Stage 继续做。
 
 ## ⚡ 先从 12 个词开始

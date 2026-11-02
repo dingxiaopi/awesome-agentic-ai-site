@@ -11,8 +11,6 @@ baseSlug: "for-teacher"
 ---
 # Extension Path: For Teachers / Educators
 
-> [繁體中文](/zh-tw/branches/for-teacher/) | [简体中文](/branches/for-teacher/) | **English**
-
 [← Back to the main route](/en)
 
 <!-- freshness: canonical=branches/for-teacher.md; verified_on=2026-08-29; scope=education-guidance,student-data,assessment,tool-availability,project-status; max_age_days=90 -->
@@ -230,5 +228,5 @@ Laws and policies vary by region, age, institution, and tool contract. Whether F
 
 </div>
 
-Contributions of subject-specific templates, age-appropriate cases, safe LMS integrations, and teacher-tested workflows are welcome. See [CONTRIBUTING.en.md](../CONTRIBUTING.en.md).
+Contributions of subject-specific templates, age-appropriate cases, safe LMS integrations, and teacher-tested workflows are welcome. See [CONTRIBUTING.en.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.en.md).
 </details>

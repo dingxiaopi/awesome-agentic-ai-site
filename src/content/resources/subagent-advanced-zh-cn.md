@@ -11,8 +11,6 @@ baseSlug: "subagent-advanced"
 ---
 # Subagent 进阶使用 — Description 写法 / Composition / Debug
 
-> [繁體中文](/zh-tw/resources/subagent-advanced/) | **简体中文** | [English](/en/resources/subagent-advanced/)
-
 > 📋 **这份是给谁看的**：你已经会用内置 subagent（[Stage 5.5](/stages/05-claude-code-ecosystem/#55--subagentsclaude-code-原生-multi-agent-机制-2025-新功能) + [cookbook](/resources/subagent-cookbook/) 走完了），准备：(1) **自己写一个** subagent、(2) **组合多个** subagent，或 (3) **debug** 跑坏的 subagent。
 >
 > ⚠️ **先决条件**：读完 Stage 5.5 §易混淆概念厘清 + cookbook 15 个 recipe 之后再来。没读 cookbook 直接看这份，会卡在“subagent 是什么”这一层。

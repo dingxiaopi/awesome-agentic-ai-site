@@ -9,8 +9,6 @@ language: "en"
 languageLabel: "English"
 baseSlug: "build-first-agent-in-7-steps"
 ---
-> [繁體中文](/zh-tw/walkthroughs/build-first-agent-in-7-steps/) | [简体中文](/walkthroughs/build-first-agent-in-7-steps/) | **English**
-
 <!-- freshness: canonical=walkthroughs/build-first-agent-in-7-steps.md; verified_on=2026-09-13; scope=models,frameworks,evals,observability,human-approval,interfaces; max_age_days=90 -->
 
 # Build Your First AI Agent in 7 Steps
@@ -846,7 +844,7 @@ The rules are straightforward:
 3. On resume, revalidate the checkpoint, schema, and ledger. If the ledger already has the same key, complete the state without repeating the side effect.
 4. Reject can cancel only an action that has not run. If a receipt or ledger proves it ran, enter recovery; do not pretend it is `cancelled`.
 
-Run the [Stage 7 Safe Execution example](/en) directly; it uses no network or model and tests crashes, late rejection, ledger conflicts, and at-most-once execution.
+Run the [Stage 7 Safe Execution example](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-7/06-safe-execution/README.en.md) directly; it uses no network or model and tests crashes, late rejection, ledger conflicts, and at-most-once execution.
 
 ### 7.4 Deploy (Docker + FastAPI)
 

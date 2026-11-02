@@ -11,8 +11,6 @@ baseSlug: "agent-memory"
 ---
 # Agent Memory：只记值得记、允许记、能删掉的事
 
-[繁體中文](/zh-tw/resources/agent-memory/) | [English](/en/resources/agent-memory/) | [简体中文](/resources/agent-memory/)
-
 <!-- freshness: canonical=resources/agent-memory.md; verified_on=2026-08-30; scope=memory,privacy,retention,isolation,project-status; max_age_days=90 -->
 
 ← [回到 Stage 6：RAG 与 Memory](/stages/06-memory-rag/)

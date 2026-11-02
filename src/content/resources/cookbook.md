@@ -11,8 +11,6 @@ baseSlug: "cookbook"
 ---
 # Cookbook — 把概念變成真的成果
 
-> **繁體中文** | [简体中文](/resources/cookbook/) | [English](/en/resources/cookbook/)
-
 <!-- freshness: canonical=resources/cookbook.md; verified_on=2026-08-30; scope=skills,mcp,documents,gemini-notebook,zotero,local-runtime,cli-tools; max_age_days=90 -->
 
 這份 Cookbook 不要求你一次讀完。先選一個想做的成果，複製它的第一個動作；需要更多步驟時，再打開選單。

@@ -12,8 +12,6 @@ order: 3
 ---
 # A3 — Connect a CLI agent to a safe team workflow
 
-> [繁體中文](/zh-tw/tracks/cli-a3-cli-production/) | [简体中文](/tracks/cli-a3-cli-production/) | **English**
-
 > [← Stage 5 — Track A core](/en/stages/05-claude-code-ecosystem/#-entry-requirements-and-reading-paths) · **Track A: CLI Power User** Stop 3 (final core stop)
 
 This stop has one goal: **have a CLI agent perform a read-only check on a test PR. It may give feedback, but it must not merge, deploy, or obtain extra permissions by itself.**

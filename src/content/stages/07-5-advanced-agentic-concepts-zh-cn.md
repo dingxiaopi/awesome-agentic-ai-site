@@ -11,8 +11,6 @@ baseSlug: "07-5-advanced-agentic-concepts"
 ---
 # Stage 7.5 — 进阶 Agentic 选择：有证据才增加复杂度
 
-> [繁體中文](/zh-tw/stages/07-5-advanced-agentic-concepts/) | **简体中文** | [English](/en/stages/07-5-advanced-agentic-concepts/)
-
 <!-- freshness: canonical=stages/07.5-advanced-agentic-concepts.md; verified_on=2026-09-13; scope=agent-patterns,harnesses,evals,dynamic-workflows,framework-status,research; max_age_days=90 -->
 
 ← **先回到 [Stage 7 — Agent 上线工程](/stages/07-multi-agent-production/)**：若你还不能用 Eval、Trace、Approval 与 Recovery 证明系统可测、可看、可停、可恢复，先不要增加本章的进阶做法。

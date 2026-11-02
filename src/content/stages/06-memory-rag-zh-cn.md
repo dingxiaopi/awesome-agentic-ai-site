@@ -14,8 +14,6 @@ order: 6
 
 **RAG**（Retrieval-Augmented Generation）：先找相关资料，再依资料回答。
 
-> [繁體中文](/zh-tw/stages/06-memory-rag/) | **简体中文** | [English](/en/stages/06-memory-rag/)
-
 <!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-30; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
 
 模型不是什么都知道。**RAG** 像叫它先翻书再回答；**Memory** 像给它一本笔记本，记住下次还会用到的事。这一关会把两者分清楚，再带你一步一步做出来。
@@ -114,7 +112,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[打开安装、检查与选用 Path B 说明](/)。先用很少的句子，避免不必要的 API 费用。
+[打开安装、检查与选用 Path B 说明](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/01-embeddings/README.zh-Hans.md)。先用很少的句子，避免不必要的 API 费用。
 
 <a id="练习-2vector-db"></a>
 ### 练习 2：把 Embedding 放进 Vector Database
@@ -127,7 +125,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[打开安装、检查与选用 Path B 说明](/)。练习资料不得包含秘密或个人资料。
+[打开安装、检查与选用 Path B 说明](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/02-vector-db/README.zh-Hans.md)。练习资料不得包含秘密或个人资料。
 
 <a id="练习-3chunking-对照"></a>
 ### 练习 3：比较三种 Chunking 方法
@@ -140,7 +138,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[打开安装、检查与选用 Path B 说明](/)。不要先背一个“标准大小”；先看文档结构与测试结果。
+[打开安装、检查与选用 Path B 说明](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/03-chunking-comparison/README.zh-Hans.md)。不要先背一个“标准大小”；先看文档结构与测试结果。
 
 <a id="练习-4完整-rag-流水线"></a>
 ### 练习 4：串起完整 RAG
@@ -153,7 +151,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[打开安装、检查与选用 Path B 说明](/)。先用小型数据集；不要把“程序能跑”当成“回答一定正确”。
+[打开安装、检查与选用 Path B 说明](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/04-full-rag-pipeline/README.zh-Hans.md)。先用小型数据集；不要把“程序能跑”当成“回答一定正确”。
 
 <a id="练习-5long-term-memory"></a>
 ### 练习 5：记住一项偏好
@@ -166,7 +164,7 @@ python -m pip install -r requirements.txt
 python starter.py
 ```
 
-[打开安装、检查与选用 Path B 说明](/)。只保存完成任务需要的资料，并提供查看、修改与删除的方法。
+[打开安装、检查与选用 Path B 说明](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-6/05-long-term-memory/README.zh-Hans.md)。只保存完成任务需要的资料，并提供查看、修改与删除的方法。
 
 ### 推荐小项目：会查资料、也会记偏好的助理
 

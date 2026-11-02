@@ -11,8 +11,6 @@ baseSlug: "subagent-cookbook"
 ---
 # Subagent Cookbook — 15 Copy-Paste Dispatch Recipes
 
-> [繁體中文](/zh-tw/resources/subagent-cookbook/) | [简体中文](/resources/subagent-cookbook/) | **English**
-
 > 📋 **What this is**: [Stage 5.5](/en/stages/05-claude-code-ecosystem/#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature) teaches the concept of subagents. This cookbook teaches you how to **use them today**: 15 scenarios, each with “which subagent to use + a complete prompt template you can copy-paste + when not to use it.”
 >
 > ⚠️ **First time here? Read Stage 5.5’s “Which subagents can you dispatch?” and “decision table” sections first**. Once you understand what a subagent is and which ones Claude Code includes, come back and pick a recipe.

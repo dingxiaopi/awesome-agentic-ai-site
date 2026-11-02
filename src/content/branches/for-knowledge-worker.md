@@ -11,8 +11,6 @@ baseSlug: "for-knowledge-worker"
 ---
 # 知識工作者延伸路線（For Knowledge Workers）
 
-> **繁體中文** | [简体中文](/branches/for-knowledge-worker/) | [English](/en/branches/for-knowledge-worker/)
-
 <!-- freshness: canonical=branches/for-knowledge-worker.md; verified_on=2026-08-29; scope=apps,connectors,mcp,workflow-automation,permissions,project-status; max_age_days=90 -->
 
 > [← 回主路線](/zh-tw) · 走完 **Track A 的 A3** 或 **Track B 的 Stage 7** 後從這裡接續。沒有開發背景也沒關係：先做一次性任務，需要重複時才接工具。

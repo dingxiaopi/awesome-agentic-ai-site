@@ -12,8 +12,6 @@ order: 3
 ---
 # Stage 3 — 工具使用与第一个 Agent Loop ⭐
 
-🌐 [English](/en/stages/03-tool-use-and-hello-agent/) | **简体中文** | [繁體中文](/zh-tw/stages/03-tool-use-and-hello-agent/)
-
 这一关要做一件事：让模型填写一张“工具工作单”，再由你的程序检查、执行，并把结果送回去。这个来回就是你的第一个 **Agent Loop**。
 
 <!-- freshness: canonical=stages/03-tool-use-and-hello-agent.md; verified_on=2026-08-27; scope=models,pricing,tool-apis,security; max_age_days=90 -->
@@ -166,7 +164,7 @@ Path A 的 **API 费用是 `$0`**；仍会使用你的硬件、内存与电力�
 
 完成后，你会看到模型先生成 `get_weather` Tool Call，程序执行它，再由模型用 Tool Result 回答。
 
-如果你偏好使用文件实现，可以打开[练习 1 完整文件夹](/)。
+如果你偏好使用文件实现，可以打开[练习 1 完整文件夹](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/01-function-calling/README.zh-Hans.md)。
 
 **第一步**：复制并运行 `ollama pull qwen2.5:3b`。接着展开 Path A，把完整程序直接复制成 `hello_tool.py`。
 
@@ -335,7 +333,7 @@ python examples/stage-3/02-multi-tool-selection/test.py
 <details markdown="1">
 <summary>展开 Path A／Path B、观察重点与预算</summary>
 
-- [Path A README（Ollama）](/)：运行 `python starter.py`。
+- [Path A README（Ollama）](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/02-multi-tool-selection/README.zh-Hans.md)：运行 `python starter.py`。
 - 同一文件夹的 `starter_anthropic.py` 是 Path B；运行 `python test_anthropic.py`，先用 mock 验证消息形状。
 - 观察 `tool_calls[0].function.name`，再确认程序会拒绝未知名称。
 - 不要使用 `globals()[model_name]()` 或 `eval()` 派发工具。
@@ -387,7 +385,7 @@ for step in range(MAX_STEPS):
 raise RuntimeError(f"Agent 超过 {MAX_STEPS} 步，已停止")
 ```
 
-真正的程序还要把 assistant 的 Tool Call 放回 history，并处理 refusal、max tokens、timeout、未知工具、JSON 解析与工具异常。完整双路径在 [`03-react-from-scratch`](/)。
+真正的程序还要把 assistant 的 Tool Call 放回 history，并处理 refusal、max tokens、timeout、未知工具、JSON 解析与工具异常。完整双路径在 [`03-react-from-scratch`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/03-react-from-scratch/README.zh-Hans.md)。
 
 把 trace 记成 `action / observation / final` 或简短可验证摘要即可；不要把私有 Chain-of-Thought 当成 log 契约。
 
@@ -410,7 +408,7 @@ python examples/stage-3/04-multi-step-reasoning/test.py
 
 任务示例：“查台北温度，再换算成华氏。”工具分成 `get_weather` 与 `celsius_to_fahrenheit`。不要把两个步骤偷偷合成一个假工具；本题要观察模型是否会接着使用前一个结果。
 
-完整双路径在 [`04-multi-step-reasoning`](/)。比较模型时，固定 prompt、tools、schema、`MAX_STEPS` 和测试题，至少重跑五次，再记录成功率与失败类型。
+完整双路径在 [`04-multi-step-reasoning`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/04-multi-step-reasoning/README.zh-Hans.md)。比较模型时，固定 prompt、tools、schema、`MAX_STEPS` 和测试题，至少重跑五次，再记录成功率与失败类型。
 
 Path A 的 API 费用是 `$0`；Path B 多轮请求先预留 `$0.10`。更大的模型可能更稳定，也可能只是更贵；用 eval 决定。
 
@@ -444,7 +442,7 @@ python examples/stage-3/05-error-handling/test_anthropic.py
 
 Anthropic 的失败 `tool_result` 使用 `"is_error": true`。OpenAI-compatible 路径可以在 `role: tool` 的 content 中放结构化错误，但应用程序仍要自己限制 retry。
 
-完整双路径在 [`05-error-handling`](/)。Path A 的 API 费用是 `$0`；Path B 一轮错误恢复先预留 `$0.10`。
+完整双路径在 [`05-error-handling`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/05-error-handling/README.zh-Hans.md)。Path A 的 API 费用是 `$0`；Path B 一轮错误恢复先预留 `$0.10`。
 
 </details>
 
@@ -468,7 +466,7 @@ python examples/stage-3/06-schema-design/test_anthropic.py
 4. 能用 `enum`、范围和 `additionalProperties: false` 就明确限制。
 5. Schema 只负责接口；权限、业务规则和数据安全仍由程序验证。
 
-完整双路径在 [`06-schema-design`](/)，速查表在 [`resources/schema-design-cheatsheet.zh-Hans.md`](/resources/schema-design-cheatsheet/)。
+完整双路径在 [`06-schema-design`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-3/06-schema-design/README.zh-Hans.md)，速查表在 [`resources/schema-design-cheatsheet.zh-Hans.md`](/resources/schema-design-cheatsheet/)。
 
 直接复制这张结果卡，不必先画空表：
 

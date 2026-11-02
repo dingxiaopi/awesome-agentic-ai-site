@@ -11,8 +11,6 @@ baseSlug: "for-teacher"
 ---
 # 教師延伸路線（For Teachers / Educators）
 
-> **繁體中文** | [简体中文](/branches/for-teacher/) | [English](/en/branches/for-teacher/)
-
 [← 回主路線](/zh-tw)
 
 <!-- freshness: canonical=branches/for-teacher.md; verified_on=2026-08-29; scope=education-guidance,student-data,assessment,tool-availability,project-status; max_age_days=90 -->
@@ -226,6 +224,6 @@ AI 可以草擬家長信、會議摘要與常見問題。寄出前刪除不必�
 
 </div>
 
-歡迎貢獻學科專用模板、年齡適切案例、LMS 安全整合與經過教師實測的工作流。請見 [CONTRIBUTING.md](../CONTRIBUTING.md)。
+歡迎貢獻學科專用模板、年齡適切案例、LMS 安全整合與經過教師實測的工作流。請見 [CONTRIBUTING.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.md)。
 
 </details>

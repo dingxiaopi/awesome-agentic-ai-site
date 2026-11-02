@@ -11,8 +11,6 @@ baseSlug: "schema-design-cheatsheet"
 ---
 # Function Schema 設計 Cheatsheet
 
-> **繁體中文** | [简体中文](/resources/schema-design-cheatsheet/) | [English](/en/resources/schema-design-cheatsheet/)
-
 > [Stage 3 — 工具使用與第一個 Agent Loop](/zh-tw/stages/03-tool-use-and-hello-agent/) 的補充參考。寫 tool / function schema 時的 5 條黃金規則 + 5 個 anti-pattern。
 
 > 規格查核：2026-08-27 UTC。Schema 是模型和程式共同看的介面；寫清楚會減少歧義，但不能取代應用程式驗證或固定 eval。

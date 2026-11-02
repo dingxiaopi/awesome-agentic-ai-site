@@ -11,8 +11,6 @@ baseSlug: "model-training-guide"
 ---
 # Optional Guide: Model Training and Adaptation
 
-> [繁體中文](/zh-tw/resources/model-training-guide/) | [简体中文](/resources/model-training-guide/) | **English**
-
 > [← Back to Stage 1](/en/stages/01-llm-basics/)
 
 This is a path-selection card, not a training course. It helps you tell which methods change a model and which methods simply help a model do a task. Beginners can read the tables first, then return to Stage 1 to call a ready-made model.

@@ -11,8 +11,6 @@ baseSlug: "for-everyday-users"
 ---
 # Extension Path: For Everyday Users
 
-> [繁體中文](/zh-tw/branches/for-everyday-users/) | [简体中文](/branches/for-everyday-users/) | **English**
-
 > [← Back to the main route](/en) · You do not need to code or finish the whole main route first.
 
 <!-- freshness: canonical=branches/for-everyday-users.md; verified_on=2026-08-29; scope=chat-apps,connectors,cli-agents,local-runtimes,privacy,project-status; max_age_days=90 -->
@@ -255,4 +253,4 @@ Choose your next stop by need:
 - Write clearer prompts: continue to [Stage 2](/en/stages/02-prompt-engineering/).
 - Use a CLI Agent safely: continue to [Track A1](/en/tracks/cli-a1-cli-intro/).
 - Distinguish Apps, Connectors, MCP, and automation: use the [knowledge-worker path](/en/branches/for-knowledge-worker/).
-- Help improve this path: read [CONTRIBUTING.en.md](../CONTRIBUTING.en.md).
+- Help improve this path: read [CONTRIBUTING.en.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.en.md).

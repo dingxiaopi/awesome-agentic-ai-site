@@ -11,8 +11,6 @@ baseSlug: "courses"
 ---
 # AI Agent 课程地图：先学会，再决定要不要拿证书
 
-> [繁體中文](/zh-tw/resources/courses/) | **简体中文** | [English](/en/resources/courses/)
-
 <!-- freshness: canonical=resources/courses.md; verified_on=2026-08-29; scope=course-availability,cost,certificate,assessment,repository-status; max_age_days=90 -->
 
 这一页帮你做一件事：**从很多课程里，挑一门真正适合现在的你。** 不必先收集证书，也不必一次报名五门。先选一门，做出一个可以展示的作品，再走下一步。

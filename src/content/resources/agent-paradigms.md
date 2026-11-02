@@ -9,8 +9,6 @@ language: "zh-tw"
 languageLabel: "繁體中文"
 baseSlug: "agent-paradigms"
 ---
-> **繁體中文** | [简体中文](/resources/agent-paradigms/) | [English](/en/resources/agent-paradigms/)
-
 # Agent 工具怎麼分：身分、操作介面、部署位置
 
 > [← 回主路線 README](/zh-tw)

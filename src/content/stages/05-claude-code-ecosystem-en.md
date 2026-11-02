@@ -175,7 +175,7 @@ mkdir -p .claude/skills/readme-check
 
 Check the YAML frontmatter manually first, then enter `/readme-check` in Claude Code. `disable-model-invocation: true` means only you can invoke it proactively, which suits workflows with side effects or a controlled timing requirement.
 
-This repository’s full meta-example is [`examples/stage-5/tool-calling-tutor/`](../examples/stage-5/tool-calling-tutor/).
+This repository’s full meta-example is [`examples/stage-5/tool-calling-tutor/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-5/tool-calling-tutor/).
 
 </details>
 
@@ -536,7 +536,7 @@ The SDK can execute commands and retain session state, so it is not an ordinary 
 
 On your first pass, choose only one entry that matches the exercise at hand. Five stars are this learning map’s editorial guidance, not a popularity ranking.
 
-**Start with this chapter project:** [`tool-calling-tutor`](/en) ⭐⭐⭐⭐⭐ — it is a Skill example in this repository that you can follow directly. For Claude Code releases and issues, use [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐.
+**Start with this chapter project:** [`tool-calling-tutor`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-5/tool-calling-tutor/README.en.md) ⭐⭐⭐⭐⭐ — it is a Skill example in this repository that you can follow directly. For Claude Code releases and issues, use [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐.
 
 <small>Information checked: 2026-08-29 UTC</small>
 

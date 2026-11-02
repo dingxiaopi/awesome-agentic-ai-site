@@ -12,8 +12,6 @@ order: 5
 ---
 # Stage 5 — Claude Code 生态系统 ⭐⭐
 
-> [繁體中文](/zh-tw/stages/05-claude-code-ecosystem/) | **简体中文** | [English](/en/stages/05-claude-code-ecosystem/)
-
 <!-- freshness: canonical=stages/05-claude-code-ecosystem.md; verified_on=2026-08-29; scope=claude-code,mcp,skills,plugins,subagents,workflows,agent-sdk,security; max_age_days=90 -->
 
 **Claude Code** 是一位会使用文件和终端的助手。本章教你如何为它设置规则、工具和安全边界，而不是让你一次装完所有东西。
@@ -175,7 +173,7 @@ mkdir -p .claude/skills/readme-check
 
 先人工检查 YAML frontmatter，再在 Claude Code 输入 `/readme-check`。`disable-model-invocation: true` 表示只有你能主动调用它，适合有副作用或需要控制时机的流程。
 
-本仓库的完整 meta-example：[`examples/stage-5/tool-calling-tutor/`](../examples/stage-5/tool-calling-tutor/)。
+本仓库的完整 meta-example：[`examples/stage-5/tool-calling-tutor/`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/tree/main/examples/stage-5/tool-calling-tutor/)。
 
 </details>
 
@@ -532,7 +530,7 @@ SDK 会执行命令并保存 session state，不能把它当普通 stateless tex
 
 第一次只选一个与眼前练习相符的入口。五星是本学习地图的编辑建议，不是人气排行榜。
 
-**本章先做这个：** [`tool-calling-tutor`](/) ⭐⭐⭐⭐⭐ — 它是仓库内可直接照着做的 Skill 示例。要查看 Claude Code 本身的版本与问题，再看 [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐。
+**本章先做这个：** [`tool-calling-tutor`](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/examples/stage-5/tool-calling-tutor/README.zh-Hans.md) ⭐⭐⭐⭐⭐ — 它是仓库内可直接照着做的 Skill 示例。要查看 Claude Code 本身的版本与问题，再看 [`anthropics/claude-code`](https://github.com/anthropics/claude-code) ⭐⭐⭐⭐⭐。
 
 <small>资料查核：2026-08-29 UTC</small>
 

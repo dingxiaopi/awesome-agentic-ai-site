@@ -12,8 +12,6 @@ order: 8
 ---
 # Stage 8 — Agent 操作界面（Agent Interfaces）：Browser Use · Computer Use · Sandbox
 
-> [繁體中文](/zh-tw/stages/08-agent-interfaces/) | **简体中文** | [English](/en/stages/08-agent-interfaces/)
-
 前面的 Stage 教 agent“想什么、调用什么工具”。这一关教另一件事：**它要从哪一扇门做事**。门选得越大，能碰的东西越多，风险也越大。所以第一步不是找最强产品，而是选最小、最好检查的门。
 
 <a id="-agent-interfaces-是什么定位"></a>

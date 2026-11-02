@@ -1,5 +1,5 @@
 ---
-title: "🚀 From Zero — Setup Guide for People Without a Development Background"
+title: "From Zero — Setup Guide for People Without a Development Background"
 description: "This page does not ask you to install every tool. Just choose one door first and complete one small result."
 section: "Resource"
 sourcePath: "resources/setup-guide.en.md"
@@ -9,8 +9,6 @@ language: "en"
 languageLabel: "English"
 baseSlug: "setup-guide"
 ---
-> [繁體中文](/zh-tw/resources/setup-guide/) | [简体中文](/resources/setup-guide/) | **English**
-
 # 🚀 From Zero — Setup Guide for People Without a Development Background
 
 > [← Back to the main roadmap README](/en)

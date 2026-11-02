@@ -11,8 +11,6 @@ baseSlug: "subagent-advanced"
 ---
 # Advanced subagent usage — Description Patterns / Composition / Debug
 
-> [繁體中文](/zh-tw/resources/subagent-advanced/) | [简体中文](/resources/subagent-advanced/) | **English**
-
 > 📋 **Who this is for**: You already know how to use built-in subagents (you have gone through [Stage 5.5](/en/stages/05-claude-code-ecosystem/#55--subagents-claude-codes-native-multi-agent-mechanism--2025-new-feature) + the [cookbook](/en/resources/subagent-cookbook/)), and you are ready to: (1) **write your own** subagent, (2) **compose multiple** subagents, or (3) **debug** a broken subagent.
 >
 > ⚠️ **Prerequisite**: Read Stage 5.5’s “Common confusing concepts clarified” section and the 15 cookbook recipes first. If you jump into this without the cookbook, you will get stuck at the “what is a subagent?” layer.

@@ -11,8 +11,6 @@ baseSlug: "for-teacher"
 ---
 # 教师延伸路线（For Teachers / Educators）
 
-> [繁體中文](/zh-tw/branches/for-teacher/) | **简体中文** | [English](/en/branches/for-teacher/)
-
 [← 回到主路线](/)
 
 <!-- freshness: canonical=branches/for-teacher.md; verified_on=2026-08-29; scope=education-guidance,student-data,assessment,tool-availability,project-status; max_age_days=90 -->
@@ -230,5 +228,5 @@ AI 可以草拟家长信、会议摘要与常见问题。寄出前删除不必�
 
 </div>
 
-欢迎贡献学科专用模板、年龄适切案例、LMS 安全整合与经过教师实测的工作流。请见 [CONTRIBUTING.zh-Hans.md](../CONTRIBUTING.zh-Hans.md)。
+欢迎贡献学科专用模板、年龄适切案例、LMS 安全整合与经过教师实测的工作流。请见 [CONTRIBUTING.zh-Hans.md](https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/CONTRIBUTING.zh-Hans.md)。
 </details>
