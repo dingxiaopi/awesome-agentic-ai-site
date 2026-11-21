@@ -273,11 +273,13 @@ py -3.11 test.py
 
 成功標準：你能重新啟動程式並從 checkpoint 繼續；沒有人的批准，流程不會進入最後發布步驟。
 
+**先畫出權限**：讓研究助理只讀指定資料。發布工具要等人確認內容和目的地後，才由程式放行。先看 [Agent 安全入門](/zh-tw/resources/agent-security/)，再到 Stage 7 測試模擬流程會不會等人核准。
+
 ## 🎯 精選 Projects
 
 第一個入口先看 [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐：你能直接看到 state、edge、checkpoint 與中斷點。其餘 18 筆已依用途分組放在下面；推薦度是本章學習順序，不是人氣排行榜。
 
-<small>既有框架資訊查核：2026-08-27 UTC；Bifrost：2026-09-03 UTC</small>
+<small>既有框架資訊查核：2026-08-27 UTC；Bifrost：2026-09-03 UTC。AutoGen：2026-11-21 UTC（程式碼授權 MIT）</small>
 
 <table align="center">
   <thead>
@@ -293,11 +295,11 @@ py -3.11 test.py
     <tr><th scope="rowgroup" rowspan="4" align="center" valign="middle">Production orchestration</th><td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td><td>要 state、checkpoint、HITL 與可重播流程。</td><td>維護中；MIT。低階 runtime，需要自己做較多設計。</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/microsoft/semantic-kernel">Microsoft Semantic Kernel</a></td><td>既有 .NET／Java／Python Microsoft 技術棧。</td><td>維護中；MIT。Microsoft 另提供遷移到 Agent Framework 的指南。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/agno-agi/agno">Agno</a></td><td>要把 Agent、Team、Workflow 接到 AgentOS 管理。</td><td>維護中；Apache-2.0。平台範圍大，先確認是否真的需要整套。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></td><td>新建 Python／.NET Microsoft Agent 專案。</td><td>Python 1.x stable；MIT。有 AutoGen／Semantic Kernel 官方遷移路徑。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="https://learn.microsoft.com/en-us/agent-framework/overview/">Microsoft Agent Framework</a></td><td>新建 Python／.NET Microsoft Agent 專案。</td><td>Python 1.x stable；MIT。有 AutoGen／Semantic Kernel 官方遷移路徑。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
     <tr><th scope="rowgroup" rowspan="6" align="center" valign="middle">快速雛形／多 Agent</th><td><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></td><td>快速做 researcher → writer → reviewer 角色流程。</td><td>維護中；MIT。Flows 已支援 persistence、resume 與 human feedback。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/microsoft/autogen">Microsoft AutoGen</a></td><td>維護既有 group-chat、辯論或 peer-review 專案。</td><td>Maintenance mode，由社群維護；CC-BY-4.0。既有 Python 專案使用 <code>autogen-agentchat</code> 0.7.x；新的 Microsoft 專案改用 Agent Framework，並避開舊 0.2 教學。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="https://github.com/microsoft/autogen">Microsoft AutoGen</a></td><td>查閱既有多 Agent 專案或準備遷移。</td><td>已封存。文件 CC-BY-4.0。既有 <code>autogen-agentchat</code> 0.7.x 可查遷移指引。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></td><td>已使用 OpenAI 生態，需要 handoff、guardrail 與 tracing。</td><td>維護中；MIT。Sandbox Agents 是 beta，不等於所有 production 問題已解決。</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/langchain-ai/deepagents">Deep Agents</a></td><td>要 planning、filesystem、subagent、memory 與 permissions 的完整 harness。</td><td>維護中；MIT。建在 LangGraph 上；簡單 Agent 用它可能太重。</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/openai/swarm">OpenAI Swarm</a></td><td>想讀小型 source，理解 Agent 與 handoff。</td><td>凍結／歷史教育用途；MIT。官方已由 Agents SDK 取代，不用於新 production 專案。</td><td>⭐⭐⭐⭐（教育）</td></tr>

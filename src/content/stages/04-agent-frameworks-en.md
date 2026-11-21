@@ -275,11 +275,13 @@ Combine the five exercises into a small project: one researcher finds sources an
 
 Success criterion: you can restart the program and continue from a checkpoint; without a person's approval, the process never enters its final publishing step.
 
+**Set permissions first.** Let the research helper read only the chosen sources. The program only enables publishing after a person checks the content and destination. Read [Agent Safety Basics](/en/resources/agent-security/), then test whether the simulated workflow waits for approval in Stage 7.
+
 ## 🎯 Curated Projects
 
 Start with [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐⭐: it lets you directly see state, edges, checkpoints, and interruption points. The other 18 entries are grouped by purpose below; the ratings indicate this chapter's learning order, not a popularity ranking.
 
-<small>Existing framework information checked: 2026-08-27 UTC; Bifrost: 2026-09-03 UTC</small>
+<small>Existing framework information checked: 2026-08-27 UTC; Bifrost: 2026-09-03 UTC. AutoGen: 2026-11-21 UTC (code license MIT)</small>
 
 <table align="center">
   <thead>
@@ -295,11 +297,11 @@ Start with [LangGraph](https://github.com/langchain-ai/langgraph) ⭐⭐⭐⭐�
     <tr><th scope="rowgroup" rowspan="4" align="center" valign="middle">Production orchestration</th><td><a href="https://github.com/langchain-ai/langgraph">LangGraph</a></td><td>Those who need state, checkpoints, HITL, and replayable workflows.</td><td>Maintained; MIT. A low-level runtime that requires more design work from you.</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/microsoft/semantic-kernel">Microsoft Semantic Kernel</a></td><td>Existing .NET / Java / Python Microsoft stacks.</td><td>Maintained; MIT. Microsoft also provides guidance for migrating to Agent Framework.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/agno-agi/agno">Agno</a></td><td>Those who want to manage Agents, Teams, and Workflows with AgentOS.</td><td>Maintained; Apache-2.0. Its platform scope is broad; confirm you really need the whole stack first.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/microsoft/agent-framework">Microsoft Agent Framework</a></td><td>New Python / .NET Microsoft Agent projects.</td><td>Python 1.x stable; MIT. Official AutoGen and Semantic Kernel migration paths are available.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="https://learn.microsoft.com/en-us/agent-framework/overview/">Microsoft Agent Framework</a></td><td>New Python / .NET Microsoft Agent projects.</td><td>Python 1.x stable; MIT. Official AutoGen and Semantic Kernel migration paths are available.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
     <tr><th scope="rowgroup" rowspan="6" align="center" valign="middle">Rapid prototyping / multi-agent</th><td><a href="https://github.com/crewAIInc/crewAI">CrewAI</a></td><td>Quick researcher → writer → reviewer role workflows.</td><td>Maintained; MIT. Flows support persistence, resume, and human feedback.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/microsoft/autogen">Microsoft AutoGen</a></td><td>Maintaining existing group-chat, debate, or peer-review projects.</td><td>Maintenance mode and community maintained; CC-BY-4.0. Existing Python projects use <code>autogen-agentchat</code> 0.7.x; use Agent Framework for new Microsoft projects and avoid old 0.2 tutorials.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="https://github.com/microsoft/autogen">Microsoft AutoGen</a></td><td>Reviewing or migrating existing multi-agent projects.</td><td>Archived. Docs CC-BY-4.0. See migration guidance for <code>autogen-agentchat</code> 0.7.x.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/openai/openai-agents-python">OpenAI Agents SDK</a></td><td>Those already in the OpenAI ecosystem who need handoffs, guardrails, and tracing.</td><td>Maintained; MIT. Sandbox Agents are beta, which does not mean every production problem is solved.</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/langchain-ai/deepagents">Deep Agents</a></td><td>Those who need a full harness for planning, filesystem access, subagents, memory, and permissions.</td><td>Maintained; MIT. Built on LangGraph; it may be too heavy for a simple Agent.</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
     <tr><td><a href="https://github.com/openai/swarm">OpenAI Swarm</a></td><td>Those who want to read small source code to understand Agents and handoffs.</td><td>Frozen / historical educational use; MIT. Superseded by the Agents SDK; do not use it for new production projects.</td><td>⭐⭐⭐⭐ (education)</td></tr>
