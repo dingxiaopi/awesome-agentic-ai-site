@@ -82,6 +82,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 <a id="1-notes--knowledge-base"></a>
 ## 1. Notes / Knowledge Bases
 
+Before an Agent searches your notes or knowledge base, check which pages it can see and whether it really needs write access.
+
 <details markdown="1">
 <summary>Expand selected entries for category 1</summary>
 
@@ -197,6 +199,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 2. Office Documents (Word / Excel / PowerPoint / PDF)
 
+Before an Agent creates or edits documents, back up the originals and check the output; correct formatting does not mean correct content.
+
 <details markdown="1">
 <summary>Expand selected entries for category 2</summary>
 
@@ -295,6 +299,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 3. Google Workspace
 
+Google Workspace reaches mail, Drive, and Calendar; start with a test account or read-only access.
+
 <details markdown="1">
 <summary>Expand selected entries for category 3</summary>
 
@@ -348,6 +354,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 4. Microsoft 365
 
+Microsoft 365 integrations inherit your organization's permissions; for a work account, ask your administrator about the policy first.
+
 <details markdown="1">
 <summary>Expand selected entries for category 4</summary>
 
@@ -400,6 +408,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 
 </details>
 ## 5. Dev Collaboration (GitHub / Atlassian / Slack…)
+
+Collaboration tools may create issues, update PRs, or send messages; keep human approval for high-impact actions.
 
 <details markdown="1">
 <summary>Expand selected entries for category 5</summary>
@@ -544,6 +554,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 6. Databases
 
+Give database tools a read-only account first, limit the schema, and grant query and write access separately.
+
 <details markdown="1">
 <summary>Expand selected entries for category 6</summary>
 
@@ -672,6 +684,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 7. Browser Automation / Web Scraping
 
+Browser tools act on real websites; set extra limits for logins, payments, publishing, and file downloads.
+
 <details markdown="1">
 <summary>Expand selected entries for category 7</summary>
 
@@ -739,6 +753,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 
 </details>
 ## 8. Design (Figma / Excalidraw)
+
+Design tools may change real assets; copy a test file first, then let the Agent edit it.
 
 <details markdown="1">
 <summary>Expand selected entries for category 8</summary>
@@ -823,6 +839,8 @@ Installation and testing belong in [Stage 5](/en/stages/05-claude-code-ecosystem
 </details>
 ## 9. Monitoring / Observability
 
+Observability tools can see traces and logs; do not send secrets, personal data, or full customer content to them directly.
+
 <details markdown="1">
 <summary>Expand selected entries for category 9</summary>
 
@@ -878,6 +896,8 @@ The license restricts Competing Use; it is not a blanket current Apache-2.0 lice
 </details>
 ## 10. Media / Streaming (YouTube / Spotify)
 
+Media tools are often limited by account, region, copyright, and API quotas; check the terms of service first.
+
 <details markdown="1">
 <summary>Expand selected entries for category 10</summary>
 
@@ -930,6 +950,8 @@ The license restricts Competing Use; it is not a blanket current Apache-2.0 lice
 
 </details>
 ## 11. Chinese-language Ecosystem
+
+Chinese-community projects meet local platform and language needs; check recent maintenance and the license, even for small projects.
 
 <details markdown="1">
 <summary>Expand selected entries for category 11</summary>
@@ -1099,12 +1121,14 @@ The license restricts Competing Use; it is not a blanket current Apache-2.0 lice
 
 **What it does**: Zhipu (Z.ai)'s GLM-4.5 open model — positioned as Agentic, Reasoning, and Coding (ARC) foundation models; open weights + API, usable as a backend for agent / tool use / coding.
 **Audience**: Chinese developers evaluating domestic open agentic models, or who need weights under a permissive license (Apache-2.0).
-**Notes**: zai-org is Zhipu's open-source org; the same series also has GLM-4 () for context; weights are on Hugging Face.
+**Notes**: zai-org is Zhipu's open-source org; use the official repo and its Hugging Face organization page as the current entry points for the series and its weights.
 
 ---
 
 </details>
 ## 12. Other Common (Cloudflare / Stripe…)
+
+This group spans many services; choose by task, and do not install them all at once just because they are 'common'.
 
 <details markdown="1">
 <summary>Expand selected entries for category 12</summary>
@@ -1347,6 +1371,8 @@ Do not turn model names into permanent job titles. First check the current model
 </details>
 ## 15. Finance / Trading Agents
 
+Finance tools may touch real assets and high-risk decisions; this catalog only offers research entry points and is not investment advice.
+
 > ⚠️ **Application-domain section**: agents applied to quantitative trading, hedge-fund simulation, and automated order placement. The two entries here are Apache-2.0 and MIT, but licensing across this category varies widely — verify each repo before reuse. **Caveat**: real-money trading agents carry significant risk; listed here for agent-design study, not as investment advice.
 
 <details markdown="1">
@@ -1387,6 +1413,8 @@ Do not turn model names into permanent job titles. First check the current model
 </details>
 ## 16. Web Search / Retrieval
 
+Search tools send your queries to outside services; think about sensitive terms, quotas, and source quality first.
+
 <details markdown="1">
 <summary>Expand selected entries for category 16</summary>
 
@@ -1422,8 +1450,25 @@ Do not turn model names into permanent job titles. First check the current model
 
 ---
 
+### [last30days](https://github.com/mvanhorn/last30days-skill) ⭐⭐⭐
+
+<div align="center" markdown="1">
+
+| Field | Value |
+|:---|:---|
+| License | MIT <small>(Verified 2026-11-25 UTC)</small> |
+| Rating | ⭐⭐⭐ (Multi-source search skill) |
+
+</div>
+
+**What it does**: combines recent multi-source search, deduplication, and ranking in one skill. Compare the summary with the original links to see how ranking affects what you read first.
+**Audience**: readers moving from a single search API to multi-source research.
+**Notes**: Practise with a public topic. Start with the [v4.6.0 configuration guide](https://github.com/mvanhorn/last30days-skill/blob/64b1f006f800640022ce07f51de5ce56aad34b76/CONFIGURATION.md). In a clean environment, select only Hacker News and GitHub and disable browser cookies. Both sources receive your query. Check what the original links say before trusting popular results.<br><small>Tested 2026-11-25 in a Python 3.12 container with no keys or logins. A public search for “Python 3.15” returned 6 Hacker News and 2 GitHub results.</small>
+
 </details>
 ## 17. Security / MCP Governance
+
+Security governance tools narrow an Agent's permissions and execution scope; build your own threat model before relying on them in production.
 
 <details markdown="1">
 <summary>Expand selected entries for category 17</summary>
